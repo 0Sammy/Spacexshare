@@ -19,7 +19,7 @@ class Email {
       secure: true, // true for 465, false for other ports
       auth: {
         user: "info@spacexshare-ai.com",
-        pass: "Gentlesin123$",
+        pass: "Sammy907$",
       }
     })
   }

@@ -18,35 +18,35 @@
       <div class="flex gap-x-5 overflow-x-auto mt-6 special pb-4">
         <div class="w-1/5 min-w-[14rem] rounded-xl p-4 border border-[#767680] border-opacity-10 flex flex-col gap-y-2"> 
           <div class="bg-[#2DE300] bg-opacity-10 rounded-[50%] h-10 w-10 flex justify-center items-center">
-            <img src="../Images/deposit.svg" alt="Deposit Icon">
+            <img src="/Images/deposit.svg" alt="Deposit Icon">
           </div>
           <p class="text-xs font-semibold">Total deposit</p>
           <p class="text-[#20BF55] text-lg md:text-xl xl:text-2xl font-bold">+$<%= deposits.reduce((total, current)=> total + current.amount, 0).toLocaleString() %></p>
         </div>
         <div class="w-1/5 min-w-[14rem] rounded-xl p-4 border border-[#767680] border-opacity-10 flex flex-col gap-y-2"> 
           <div class="bg-[#DB6464] bg-opacity-10 rounded-[50%] h-10 w-10 flex justify-center items-center">
-            <img src="../Images/withdraw.svg" alt="Withdraw Icon">
+            <img src="/Images/withdraw.svg" alt="Withdraw Icon">
           </div>
           <p class="text-xs font-semibold">Total withdrawal</p>
           <p class="text-[#FF5964] text-lg md:text-xl xl:text-2xl font-bold">-$<%= withdrawals.reduce((total, current)=> total + current.amount, 0).toLocaleString() %></p>
         </div>
         <div class="w-1/5 min-w-[14rem] rounded-xl p-4 border border-[#767680] border-opacity-10 flex flex-col gap-y-2"> 
           <div class="bg-[#DBFE87] bg-opacity-50 rounded-[50%] h-10 w-10 flex justify-center items-center">
-            <img src="../Images/earn.svg" alt="Earn Icon">
+            <img src="/Images/earn.svg" alt="Earn Icon">
           </div>
           <p class="text-xs font-semibold">Total earnings</p>
           <p class="text-[#76A409] text-lg md:text-xl xl:text-2xl font-bold">+$<%= earnings.reduce((total, current)=> total + current.amount, 0).toLocaleString() %></p>
         </div>
         <div class="w-1/5 min-w-[14rem] rounded-xl p-4 border border-[#767680] border-opacity-10 flex flex-col gap-y-2"> 
           <div class="bg-[#6477DB] bg-opacity-10 rounded-[50%] h-10 w-10 flex justify-center items-center">
-            <img src="../Images/adminUsers.svg" alt="Users Icon">
+            <img src="/Images/adminUsers.svg" alt="Users Icon">
           </div>
           <p class="text-xs font-semibold">Total users</p>
           <p class="text-[#0E48A1] text-lg md:text-xl xl:text-2xl font-bold"><%= users.length %></p>
         </div>
         <div class="w-1/5 min-w-[14rem] rounded-xl p-4 border border-[#767680] border-opacity-10 flex flex-col gap-y-2"> 
           <div class="bg-[#712F79] bg-opacity-30 rounded-[50%] h-10 w-10 flex justify-center items-center">
-            <img src="../Images/investment.svg" alt="Invest Icon">
+            <img src="/Images/investment.svg" alt="Invest Icon">
           </div>
           <p class="text-xs font-semibold">Total investments</p>
           <p class="text-[#712F79] text-lg md:text-xl xl:text-2xl font-bold">-$<%= investments.reduce((total, current)=> total + current.amount, 0).toLocaleString() %></p>

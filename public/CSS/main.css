@@ -665,8 +665,8 @@ video {
   left: 0.25rem;
 }
 
-.bottom-10 {
-  bottom: 2.5rem;
+.bottom-20 {
+  bottom: 5rem;
 }
 
 .top-\[30\%\] {
@@ -1013,8 +1013,8 @@ video {
   width: 80%;
 }
 
-.w-\[22rem\] {
-  width: 22rem;
+.w-\[20rem\] {
+  width: 20rem;
 }
 
 .w-\[95\%\] {
@@ -1091,10 +1091,6 @@ video {
 
 .w-48 {
   width: 12rem;
-}
-
-.w-\[20rem\] {
-  width: 20rem;
 }
 
 .w-20 {
@@ -1421,11 +1417,6 @@ video {
   border-color: rgb(242 242 247 / var(--tw-border-opacity));
 }
 
-.border-lightBlack {
-  --tw-border-opacity: 1;
-  border-color: rgb(8 7 8 / var(--tw-border-opacity));
-}
-
 .border-\[\#E6E7E8\] {
   --tw-border-opacity: 1;
   border-color: rgb(230 231 232 / var(--tw-border-opacity));
@@ -1459,6 +1450,11 @@ video {
 .border-\[\#8E8E93\] {
   --tw-border-opacity: 1;
   border-color: rgb(142 142 147 / var(--tw-border-opacity));
+}
+
+.border-lightBlack {
+  --tw-border-opacity: 1;
+  border-color: rgb(8 7 8 / var(--tw-border-opacity));
 }
 
 .border-\[\#712F79\] {
@@ -1658,6 +1654,10 @@ video {
 
 .bg-\[url\(\'\.\.\/Images\/Background\.svg\'\)\] {
   background-image: url('../Images/Background.svg');
+}
+
+.bg-\[url\(\'\/Images\/Background\.svg\'\)\] {
+  background-image: url('/Images/Background.svg');
 }
 
 .object-cover {
@@ -2058,6 +2058,11 @@ video {
 .text-\[\#9EA0A3\] {
   --tw-text-opacity: 1;
   color: rgb(158 160 163 / var(--tw-text-opacity));
+}
+
+.text-\[\#DBFE87\] {
+  --tw-text-opacity: 1;
+  color: rgb(219 254 135 / var(--tw-text-opacity));
 }
 
 .text-\[\#06121B\] {
@@ -2815,11 +2820,6 @@ body::-webkit-scrollbar-thumb:hover {
   border-color: rgb(8 7 8 / var(--tw-border-opacity));
 }
 
-.dark .dark\:border-white {
-  --tw-border-opacity: 1;
-  border-color: rgb(242 242 247 / var(--tw-border-opacity));
-}
-
 .dark .dark\:border-\[\#F2F2F7\] {
   --tw-border-opacity: 1;
   border-color: rgb(242 242 247 / var(--tw-border-opacity));
@@ -2947,6 +2947,10 @@ body::-webkit-scrollbar-thumb:hover {
     height: 1.5rem;
   }
 
+  .sm\:w-\[22rem\] {
+    width: 22rem;
+  }
+
   .sm\:w-\[80\%\] {
     width: 80%;
   }
@@ -2989,10 +2993,6 @@ body::-webkit-scrollbar-thumb:hover {
 
   .sm\:w-auto {
     width: auto;
-  }
-
-  .sm\:w-\[22rem\] {
-    width: 22rem;
   }
 
   .sm\:self-center {
@@ -3677,6 +3677,10 @@ body::-webkit-scrollbar-thumb:hover {
 
   .xl\:h-16 {
     height: 4rem;
+  }
+
+  .xl\:h-20 {
+    height: 5rem;
   }
 
   .xl\:w-\[50\%\] {

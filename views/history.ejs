@@ -49,7 +49,7 @@
                 <% if (transaction.type == "deposit") { %>
                   <div class="flex gap-x-1 items-center">
                     <div class="bg-[#2DE300] bg-opacity-10 rounded-[50%] p-2">
-                      <img src="../Images/deposit.svg" alt="Deposit Icon">
+                      <img src="/Images/deposit.svg" alt="Deposit Icon">
                     </div>
                     <div class="flex flex-col gap-y-0.5">
                       <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize">Deposit via <%= transaction.medium %></p>
@@ -60,7 +60,7 @@
                  
                   <div class="flex gap-x-1 items-center">
                     <div class="bg-[#DB6464] bg-opacity-10 rounded-[50%] p-2">
-                      <img src="../Images/withdraw.svg" alt="Withdraw Icon">
+                      <img src="/Images/withdraw.svg" alt="Withdraw Icon">
                     </div>
                     <div class="flex flex-col gap-y-0.5">
                       <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold">Withdrawal via <%= transaction.account.walletType %></p>
@@ -71,7 +71,7 @@
                 <% } else if (transaction.type == "investment") { %>
                   <div class="flex gap-x-1 items-center">
                     <div class="bg-[#712F79] bg-opacity-30 rounded-[50%] p-2">
-                      <img src="../Images/investment.svg" alt="Invest Icon">
+                      <img src="/Images/investment.svg" alt="Invest Icon">
                     </div>
                     <div class="flex flex-col gap-y-0.5">
                       <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize">Investment via <%= transaction.medium %></p>
@@ -81,7 +81,7 @@
                 <% } else if (transaction.type == "penalty") { %>
                   <div class="flex gap-x-1 items-center">
                     <div class="bg-red-600 bg-opacity-50 rounded-[50%] p-2">
-                      <img src="../Images/earn.svg" alt="Earn Icon">
+                      <img src="/Images/earn.svg" alt="Earn Icon">
                     </div>
                     <div class="flex flex-col gap-y-0.5">
                       <p class="text-red-600 text-xs sm:text-sm md:text-base font-semibold capitalize">Penalty</p>
@@ -91,7 +91,7 @@
                   <% } else {%>
                     <div class="flex gap-x-1 items-center">
                       <div class="bg-[#DBFE87] bg-opacity-50 rounded-[50%] p-2">
-                        <img src="../Images/earn.svg" alt="Earn Icon">
+                        <img src="/Images/earn.svg" alt="Earn Icon">
                       </div>
                       <div class="flex flex-col gap-y-0.5">
                         <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize">Earning</p>
@@ -134,11 +134,11 @@
                 <hr>
               <% } %>
               <% if (transaction.type == "earning") { %>
-                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize flex items-center"><span class="text-black">Gain/Loss: </span><img class="h-8" src="../Images/profit.gif" alt="Gain"> Gain</h4>
+                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize flex items-center"><span class="text-black">Gain/Loss: </span><img class="h-8" src="/Images/profit.gif" alt="Gain"> Gain</h4>
               <hr>
               <% } %>
               <% if (transaction.type == "investment") { %>
-                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize flex items-center"><span class="text-black">Fee: </span><img class="h-8" src="../Images/fee.gif" alt="No Fee"> No Fee </h4>
+                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize flex items-center"><span class="text-black">Fee: </span><img class="h-8" src="/Images/fee.gif" alt="No Fee"> No Fee </h4>
               <hr>
               <% } %>
               <h4 class="text-xs sm:text-sm mt-2 md:text-base text-darkBlue">

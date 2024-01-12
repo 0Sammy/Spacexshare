@@ -20,7 +20,7 @@
         <% if(user.isVerified !== true) { %>
         <div class="w-full bg-[#0E48A1] px-4 py-2 flex justify-between">
             <div class="flex gap-x-2 items-center">
-                <img src="../Images/dashboardKYC.svg" alt="KYC Icon">
+                <img src="/Images/dashboardKYC.svg" alt="KYC Icon">
                 <p class="hidden md:block text-limeGreen text-xs lg:text-sm">Unlock exclusive benefits by verifying your Account</p>
                 <p class="md:hidden text-limeGreen text-xs">Verify your Account</p>
             </div>
@@ -64,9 +64,9 @@
                 <div class="w-[50%] bg-[#FFFFFF] h-48 rounded-xl mt-6 border border-[#767680] border-opacity-10 min-w-[10rem] mb-4 p-2 md:p-4">
                     <div class="relative flex justify-between items-center">
                         <div class="rounded-[50%] p-2 md:p-3 bg-[#2DE300] bg-opacity-10">
-                            <img src="../Images/deposit.svg" alt="Deposit Icon">
+                            <img src="/Images/deposit.svg" alt="Deposit Icon">
                         </div>
-                        <img id="balanceMenuIcon" src="../Images/more.svg" alt="More Icon" class="cursor-pointer">
+                        <img id="balanceMenuIcon" src="/Images/more.svg" alt="More Icon" class="cursor-pointer">
                         <div id="balanceMenu" class="hidden absolute bg-[#F0F8FF] bg-opacity-50 top-8 right-0 rounded-sm py-2 px-4 z-10">
                             <a class="text-xs md:text-sm lg:text-xs xl:text-sm font-semibold hover:text-lightBlue duration-500" href="/user/deposit">Add Balance</a>
                         </div>
@@ -77,15 +77,15 @@
                             <p class="number text-[0.9rem] sm:text-lg lg:text-xl xl:text-3xl font-bold text-[#20BF55] noasterisks">+$<%= deposits.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
                             <p class="number1 hidden">+$<%= deposits.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
                         </div>
-                        <img src="../Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                        <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
                     </div>
                 </div>
                 <div class="w-[50%] bg-[#FFFFFF] h-48 rounded-xl mt-6 border border-[#767680] border-opacity-10 min-w-[10rem] mb-4 p-2 md:p-4">
                     <div class="relative flex justify-between items-center">
                         <div class="rounded-[50%] p-2 md:p-3 bg-[#DB6464] bg-opacity-10">
-                            <img src="../Images/withdraw.svg" alt="Withdraw Icon">
+                            <img src="/Images/withdraw.svg" alt="Withdraw Icon">
                         </div>
-                        <img id="withdrawMenuIcon" src="../Images/more.svg" alt="More Icon" class="cursor-pointer">
+                        <img id="withdrawMenuIcon" src="/Images/more.svg" alt="More Icon" class="cursor-pointer">
                         <div id="withdrawMenu" class="hidden absolute bg-[#F0F8FF] bg-opacity-50 top-8 right-0 rounded-sm py-2 px-4 z-10">
                             <a class="text-xs md:text-sm lg:text-xs xl:text-sm font-semibold hover:text-lightBlue duration-500" href="/user/withdraw">Withdraw Now</a>
                         </div>
@@ -96,7 +96,7 @@
                             <p class="number text-[0.9rem] sm:text-lg lg:text-xl xl:text-3xl font-bold text-[#FF5964] noasterisks">-$<%= withdrawals.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
                             <p class="hidden number1">-$<%= withdrawals.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
                         </div>
-                        <img src="../Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                        <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                     <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
                     <div class="flex gap-x-1 items-center">
                         <div class="bg-[#2DE300] bg-opacity-10 rounded-[50%] p-2">
-                            <img src="../Images/deposit.svg" alt="Deposit Icon">
+                            <img src="/Images/deposit.svg" alt="Deposit Icon">
                         </div>
                 
                         <div class="flex flex-col gap-y-0.5">
@@ -131,7 +131,7 @@
                     <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
                     <div class="flex gap-x-1 items-center">
                         <div class="bg-[#DB6464] bg-opacity-10 rounded-[50%] p-2">
-                            <img src="../Images/withdraw.svg" alt="Withdraw Icon">
+                            <img src="/Images/withdraw.svg" alt="Withdraw Icon">
                         </div>
                         <div class="flex flex-col gap-y-0.5">
                             <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold">Withdrawal via <%= transaction.account.walletType %></p>
@@ -144,7 +144,7 @@
                         <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
                             <div class="flex gap-x-1 items-center">
                                 <div class="bg-[#712F79] bg-opacity-30 rounded-[50%] p-2">
-                                    <img src="../Images/investment.svg" alt="Invest Icon">
+                                    <img src="/Images/investment.svg" alt="Invest Icon">
                                 </div>
                                 <div class="flex flex-col gap-y-0.5">
                                     <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize"><%= transaction.plan %> Plan Investment</p>
@@ -157,7 +157,7 @@
                         <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
                             <div class="flex gap-x-1 items-center">
                                 <div class="bg-red-600 bg-opacity-50 rounded-[50%] p-2">
-                                    <img src="../Images/earn.svg" alt="Earn Icon">
+                                    <img src="/Images/earn.svg" alt="Earn Icon">
                                 </div>
                                 <div class="flex flex-col gap-y-0.5">
                                     <p class="text-red-600 text-xs sm:text-sm md:text-base font-semibold">Penalty</p>
@@ -170,7 +170,7 @@
                             <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
                                 <div class="flex gap-x-1 items-center">
                                     <div class="bg-[#DBFE87] bg-opacity-50 rounded-[50%] p-2">
-                                        <img src="../Images/earn.svg" alt="Earn Icon">
+                                        <img src="/Images/earn.svg" alt="Earn Icon">
                                     </div>
                                     <div class="flex flex-col gap-y-0.5">
                                         <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold">Earning</p>
@@ -184,7 +184,7 @@
                 </div>
                 <div class="my-6 flex justify-end gap-x-2 items-center">
                     <a href="/user/transactions" class="text-xs text-[#0E48A1]">View All</a>
-                    <img src="../Images/arrow-right.svg" alt="Right Arrow">
+                    <img src="/Images/arrow-right.svg" alt="Right Arrow">
                 </div>
         </div>
         <div class="w-full lg:w-[50%] lg:-mt-60">
@@ -194,7 +194,7 @@
                 <div class="flex gap-x-1 mt-2 border-b border-[#767680] border-opacity-10 pb-4">
                     <p class="number text-lg sm:text-xl lg:text-2xl xl:text-4xl font-bold text-lightBlue noasterisks">$<%= user.balance.toLocaleString() %></p>
                     <p class="hidden number1">$<%= user.balance.toLocaleString() %></p>
-                    <img src="../Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                    <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
                 </div>
                 <div class="flex flex-col gap-y-4 mt-4">
                     <div class="flex justify-between">
@@ -228,7 +228,6 @@
             </div>
         </div>
     </div>
-    
 </section>
 <%- include("partials/script"); -%>
 </body>
