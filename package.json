@@ -1,7 +1,7 @@
 {
-  "name": "spacex-shares",
+  "name": "spacexshare-ai",
   "version": "1.0.0",
-  "description": "This is the investment website of the Spiraxchange.",
+  "description": "This is the investment website of the Spacexshare-Ai.",
   "main": "app.js",
   "engines": {
     "node": "<=20"

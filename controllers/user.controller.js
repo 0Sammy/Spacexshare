@@ -1,6 +1,5 @@
 require("dotenv").config();
 const scheduler = require("node-schedule");
-const nodemailer = require("nodemailer");
 const { sendEmail } = require('../utils/adminMail.util')
 
 const {
