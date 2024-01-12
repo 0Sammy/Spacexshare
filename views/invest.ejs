@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investment</title>
+  <%-include("partials/dashboardSEO")-%>
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+  <script defer src="../JS/invest.js"></script>
+</head>
+
+<body class="main bg-[#F0F8FF] bg-opacity-50">
+  <%- include ("partials/_alert")-%>
+  <%- include ("partials/sidebar")-%>
+<section>
+    <div class="flex flex-row justify-between py-3 border-b border-lightBlue">
+        <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+            <h1 class="text-lightBlue text-base sm:text-lg md:text-xl font-bold">
+              Make An Investment
+            </h1>
+        </div>
+        <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+            <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+            <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+                <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+                <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+                <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+                <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+                <form action="/user/logout" method="post" class="cursor-pointer">
+                    <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<p class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-lightBlack m-4 mt-20">Investment</p>
+<section class="p-4">
+  <div class="flex flex-col lg:flex-row gap-y-10 lg:gap-y-0">
+    <div class="lg:w-[30%]">
+      <div class="pl-3 flex gap-x-2 mt-6 cursor-none border-l-4 text-[#712F79] border-[#712F79]">
+        <img src="../Images/investment.svg" alt="Investment Icon">
+        <p class="text-sm md:text-base font-semibold">Investment</p>
+      </div>
+      <% if(investments.length> 0){ %>
+        <section>
+          <h4 class="mt-10 text-base font-bold md:text-xl">Running Investments...</h4>
+          <p class="text-xs capitalize mt-2">Dear Investors, please find your active investments displayed below.</p>
+          <% investments.forEach(investment=> {%>
+          <div class="my-10 flex items-center justify-between lg:w-[90%] border border-[#712F79] rounded-sm pl-2">
+          <p class="text-sm md:text-base">$<%= investment.amount %></p>
+          <p class="text-sm md:text-base"><%= investment.createdAt.toLocaleDateString() %></p>
+          <p class="text-sm md:text-base"><%= investment.expiresAt.toLocaleDateString() %></p>
+          <p><img class="h-14" src="../Images/loading.gif" alt="It is Loading"></p>
+          </div>
+          <% }) %>
+         </section>
+         <% } %>
+      </div>
+    <div class="lg:w-[70%]">
+      <h1 class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold">
+        Make An Investment
+      </h1>
+      <h4 class="text-sm mt-4 text-darkBlue md:text-base">Select Your Plan.</h4>
+      <form id="form" action="/user/invest" method="post" class="sm:w-[80%] xl:w-[70%] 2xl:w-[60%] text-xs sm:text-sm xl:text-base">
+        <div class="custom-select mt-2 border-2 border-[#EBEBEB] rounded-md">
+          <select name="plan">
+            <option value=""selected>Select Your Plan</option>
+            <option value="starter" >Starter Plan</option>
+            <option value="regular">Regular Plan</option>
+            <option value="pro">Pro Plan</option>
+            <option value="elite">Elite Plan</option>
+          </select>
+        </div>
+        <div class="mt-20">
+          <h4 class="text-sm text-darkBlue md:text-base">
+            Amount To Invest.
+          </h4>
+          <input class="w-full py-3 mt-2 placeholder:text-xs md:placeholder:text-sm px-6 border-2 border-[#EBEBEB] rounded-md"
+            type="number" name="amount" id="amount" placeholder="Enter The Amount Here" />
+        </div>
+        <button type="submit" class="w-full text-white py-3 mt-10 duration-700 border-2 border-[#712F79] hover:bg-[#FFF] hover:text-[#712F79] bg-[#712F79] rounded-md">
+          Invest
+        </button>
+      </form>
+      <section>          
+        <div class="mt-10">
+          <h1 class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold">
+            Our Plans?
+          </h1>
+          <p class="text-xs capitalize my-6 md:text-sm">
+            Review our plans and select the option that best aligns with your
+            investment goals.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-5">
+            <div id="card-1" class="w-[16rem]"><img src="/Images/2.png" alt="First Investment Image"></div>
+            <div id="card-2" class="w-[16rem]"><img src="/Images/3.png" alt="Second Investment Image"></div>
+            <div id="card-3" class="w-[17rem]"><img src="/Images/1.png" alt="Third Investment Image"></div>
+            <div id="card-4" class="w-[16rem]"><img src="/Images/4.png" alt="Fourth Investment Image"></div>
+        </div>
+    </section>
+    </div>
+  </div>
+</section>    
+<%- include ("partials/script"); -%>
+</body>
+</html>

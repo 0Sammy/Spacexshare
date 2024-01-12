@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Refer</title>
+  <%-include("partials/adminSEO")-%>
+
+</head>
+    <body class="bg-darkGray main">
+      <%- include("partials/_adminAlert")%>
+      <%- include("partials/adminSidebar"); -%>
+        <section>
+          <div class="flex flex-col items-center justify-center">
+            <div class="mt-20 text-center">
+              <h1 class="text-2xl text-brightBlue font-bold md:text-4xl">Referrals</h1>
+              <h4 class="text-xs sm:text-sm xl:text-base mt-2 text-darkBlue">
+                A Summary On Your Referrals And Their Details.
+              </h4>
+            </div>
+
+            <table class="mx-auto mt-12 mb-1 border-collapse w-[90%] text-xs sm:text-sm xl:text-base rounded-md">
+              <thead class="">
+                <tr class="h-16 border-b-2 border-cyan-500">
+                  <th class="w-1/4 border border-slate-300 text-center">
+                    Username</th>
+                  <th class="w-1/4 border border-slate-300 text-center">
+                    Account Balance</th>
+                  <th class="w-1/4 border border-slate-300 text-center">
+                    Registration Date</th>
+                  <th class="w-1/4 border border-slate-300 text-center">
+                    Referred By</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% referredUsers.forEach(user=> {%>
+                  <tr class="border-b-1 h-10">
+                    <td class="border capitalize text-center">
+                      <a href="/user/admin/profile/<%= user._id %>">
+                        <%= user.username || user.firstName%>
+                      </a>
+                    </td>
+                    <td class="border text-center">
+                      $<%= user.balance %>
+                    </td>
+                    <td class="border capitalize text-center">
+                      <%= user.createdAt.toLocaleDateString() %>
+                    </td>
+                    <td class="border capitalize text-center">
+                      <a href="/user/admin/profile/<%= user.referredBy._id %>">
+                        <%= user.referredBy.username || user.referredBy.firstName %>
+                      </a>
+                    </td>
+                  </tr>
+                  <% }) %>
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <%- include ("partials/script"); -%>
+    </body>
+
+</html>

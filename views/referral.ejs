@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <%-include("partials/dashboardSEO")-%>
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+</head>
+
+<body class="main bg-[#F0F8FF] bg-opacity-50">
+<%- include("partials/_alert")%>
+<%- include ("partials/sidebar")-%> 
+<section>
+  <div class="flex flex-row justify-between py-3 border-b border-lightBlue">
+      <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+          <h1 class="text-lightBlue text-base sm:text-lg md:text-xl font-bold">
+            Referrals
+          </h1>
+      </div>
+      <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+          <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+          <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+              <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+              <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+              <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+              <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+              <form action="/user/logout" method="post" class="cursor-pointer">
+                  <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+<div class="p-4 mt-20 flex flex-col gap-y-2">
+  <p class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-lightBlack">Deposit</p>
+  <p class="text-[#020100]">Earn up to <span class="font-bold text-lg text-[#FF5964]">10%</span> on referral deposit</p>
+</div>
+<section class="p-4">
+<div class="px-4 py-2 md:py-3 border border-[#545458] border-opacity-50 rounded-md">
+  <a onclick="copy()">
+    <p id="referral-link" class="text-xs sm:text-sm xl:text-base text-lightBlue cursor-pointer">
+      https://www.spiraxchange.com/user/create?ref=<%= user.userId %>
+    </p>
+  </a>
+</div>
+<p class="text-xs  mt-4 text-[#FF5964]">Click on the link to copy it to your CLIPBOARD</p>
+<div class="bg-[#FFF] p-2 md:p-4 xl:p-6 rounded-md border border-[#767680] border-opacity-30 mt-10">
+  <table class="mx-auto border-collapse w-[90%] text-xs md:text-sm rounded-md md:mx-auto">
+    <thead class="">
+      <tr class=" text-left h-10 border-b">
+        <th class="w-1/4 border border-slate-300 dark:border-slate-600 font-semibold text-center">
+          User name</th>
+        <th class="w-1/4 border border-slate-300 dark:border-slate-600 font-semibold text-center">
+          Date</th>
+        <th class="w-1/4 border border-slate-300 dark:border-slate-600 font-semibold text-center">
+          Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% user.referrals.forEach( referral => {%>
+        <tr class="border-b h-10 border-limeGreen">
+          <td class="text-xs md:text-smcapitalize text-center">
+            <%= referral?.username ?? "Unavailable" %>
+          </td>
+          <td class="text-xs md:text-sm capitalize text-center">
+            <%= referral?.createdAt?.toLocaleDateString() ?? "Unavailable" %>
+          </td>
+          <td class="text-xs md:text-sm text-green-700 text-center">
+            Success
+          </td>
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+</div>
+</section>
+  <script src="../JS/referral.js"></script>
+  <%- include ("partials/script"); -%>
+</body>
+
+</html>

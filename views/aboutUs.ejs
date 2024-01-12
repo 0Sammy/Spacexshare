@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <%-include("partials/SEO")-%>
+    <script defer src="../JS/aboutUS.js"></script>
+  </head>
+  <body class="bg-white dark:bg-lightBlack">
+    <%- include("partials/nav"); -%>
+    <section id="Top">
+      
+      <div class="w-full relative h-4/5">
+        <div class="w-full absolute bg-darkBlue dark:bg-lightBlue h-96"></div>
+        <div
+          class="w-full absolute flex flex-col items-center justify-center h-96"
+        >
+          <h1
+            class="dark:text-black text-white text-4xl md:text-5xl text-center font-bold"
+          >
+            About Spacexshare-Ai
+          </h1>
+          <p
+            class="text-xs md:text-sm dark:text-black text-white capitalize mt-2 text-center p-1"
+          >
+            Who We Are: Our Company's Background, Vision, and Values.
+          </p>
+          <div class="aboutUs mt-6 space-x-4 flex px-2">
+            <a href="/user/create"
+              ><button class="duration-500 text-xs uppercase font-semibold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    fill="currentColor"
+                    d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                  ></path>
+                </svg>
+                <span>Open A Free Account</span>
+              </button></a
+            >
+            <a href="/news"
+              ><button class="duration-500 text-xs uppercase font-semibold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    fill="currentColor"
+                    d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                  ></path>
+                </svg>
+                <span>Read some news</span>
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="mt-96" id="Summary">
+      <div class="flex flex-col bg-white py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem] px-4 dark:bg-black gap-y-10 lg:gap-y-0 sm:px-6 lg:flex-row lg:justify-between lg:gap-x-10 xl:gap-x-14 lg:items-center md:px-8 lg:px-10 xl:px-12 2xl:px-16">
+        <div class="lg:w-[50%]">
+          <img
+            class="w-full h-full object-cover" 
+            src="../Images/aboutUs.svg"
+            alt="About us image."
+          />
+        </div>
+        <div class="lg:w-[50%] flex flex-col gap-y-8 text-left">
+          <h1 class="font-bold text-black dark:text-white text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">What is <span class="text-lightBlue">Spacexshare-Ai</span></h1>
+          <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed mt-2">
+            Spacexshare-Ai was founded in 2015 by a team of experienced investors
+            and technologists who saw the potential of blockchain technology to
+            transform the financial industry. The company started as a small
+            investment firm focused on cryptocurrency trading, but quickly
+            expanded its operations to include blockchain development, digital
+            asset management, and other related services. <br />
+            <br />
+            In 2017, Spacexshare-Ai launched its investment website,
+            Spacexshare-Ai.com, which quickly gained popularity among
+            cryptocurrency investors and traders. The website offered a
+            user-friendly interface, low or no transaction fees, and a wide
+            range of cryptocurrencies for trading. <br />
+            By 2018, Spacexshare-Ai had established itself as a leading player in
+            the cryptocurrency industry, with a team of over 100 employees and
+            offices in several major cities around the world. <br />
+            <br />
+            Spacexshare-Ai announced its plans to launch its own cryptocurrency,
+            called SPACE, which would be used to facilitate transactions on its
+            platform and offer exclusive benefits to its users. The launch of
+            SPACE is highly anticipated, and the company has raised over $50
+            million in an initial coin offering (ICO) to fund its development.
+            <br />
+            Spacexshare-Ai has continued to innovate and expand its services,
+            becoming one of the most trusted and respected names in the
+            cryptocurrency industry. The company's commitment to transparency,
+            security, and user experience has earned it a loyal following among
+            cryptocurrency enthusiasts and investors alike. Today, Spacexshare-Ai
+            has a global presence, serving millions of users in over 100
+            countries around the world.
+          </p>
+        </div>
+      </div>
+    </section> 
+    <section id="Values">
+      <div class="flex flex-col bg-white py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem] px-4 dark:bg-black gap-y-10 lg:gap-y-0 sm:px-6 lg:flex-row lg:justify-between lg:gap-x-10 xl:gap-x-14 lg:items-center md:px-8 lg:px-10 xl:px-12 2xl:px-16">
+        <div class="lg:w-[50%] flex flex-col gap-y-8 text-left">
+          <h1 class="font-bold text-black dark:text-white text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Our Values</h1>
+          <div>
+            <p class="text-darkBlue dark:text-lightBlue font-bold text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">Our Mission</p>
+            <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed mt-2">
+              At Spacexshare-Ai, our mission is to provide innovative and
+              user-friendly investment solutions that help individuals and
+              organizations achieve their financial goals.
+            </p>
+          </div>
+          <div>
+            <p class="text-darkBlue dark:text-lightBlue font-bold text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">Our Vision</p>
+            <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed mt-2">
+              Our vision at Spacexshare-Ai is to become the go-to platform for
+              investment and financial freedom, empowering our users with
+              cutting-edge technology and exceptional customer service.
+            </p>
+          </div>
+          <div>
+            <p class="text-darkBlue dark:text-lightBlue font-bold text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">Our Goal</p>
+            <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed mt-2">
+              Our goal at Spacexshare-Ai is to make investing accessible to
+              everyone, regardless of their background or financial status. We aim
+              to help our users build wealth, achieve their dreams, and secure
+              their future through smart, diversified investments.
+            </p>
+          </div>
+        </div>
+        <div class="lg:w-[50%]">
+          <img
+            class="w-full h-full object-cover"
+            src="../Images/aboutUsImg.svg"
+            alt="Spacexshare-Ai Office Image"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="Revenue Streams">
+      <div class="flex flex-col-reverse bg-white py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem] px-4 dark:bg-black gap-y-10 lg:gap-y-0 sm:px-6 lg:flex-row lg:justify-between lg:gap-x-10 xl:gap-x-14 lg:items-center md:px-8 lg:px-10 xl:px-12 2xl:px-16">
+        <div class="lg:w-[50%]">
+          <img
+            class="w-full h-full object-cover" 
+            src="../Images/revenue.svg"
+            alt="About us image."
+          />
+        </div>
+        <div class="lg:w-[50%] flex flex-col gap-y-8 text-left">
+          <h1 class="font-bold text-black dark:text-white text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Revenue streams</h1>
+          <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed">The income streams of Spacexshare-Ai come from multiple businesses conducted within the company, including Bitcoin mining activities, AI-related endeavors, and general space-related activities.</p>
+          <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed">There are the various sources of revenue or income generated by Spacexshare-ai.</p>
+          <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed">Bitcoin mining activities refers to the process of creating new Bitcoins and verifying transactions on the Bitcoin network. It requires powerful computers to solve complex mathematical problems. Spacexshare-Ai is involved in Bitcoin mining as one of its business activities.</p>
+        </div>
+      </div>
+    </section>
+    <section id="Artificial Intelligence">
+      <div class="flex flex-col bg-white py-[3rem] sm:py-[4rem] md:py-[5rem] lg:py-[6rem] xl:py-[7rem] 2xl:py-[8rem] px-4 dark:bg-black gap-y-10 lg:gap-y-0 sm:px-6 lg:flex-row lg:justify-between lg:gap-x-10 xl:gap-x-14 lg:items-center md:px-8 lg:px-10 xl:px-12 2xl:px-16">
+        <div class="lg:w-[50%] flex flex-col gap-y-8 text-left">
+          <h1 class="font-bold text-black dark:text-white text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Artificial intelligence</h1>
+          <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed">SpaceX AI indicates that SpaceX is involved in artificial intelligence (AI) research, development, or applications. AI refers to the simulation of human intelligence in machines, enabling them to perform tasks that typically require human intelligence, such as speech recognition, decision-making, or problem-solving.</p>
+          <p class="text-xs sm:text-sm lg:text-base text-[#48484A] dark:text-[#8E8E93] leading-relaxed">SpaceX general activities which encompasses the core operations of SpaceX, which include the design, development, and launch of advanced rockets and spacecraft for various purposes, such as satellite deployment, cargo resupply missions to the International Space Station (ISS), and potentially human space travel.</p>
+        </div>
+        <div class="lg:w-[50%]">
+          <img
+            class="w-full h-full object-cover"
+            src="../Images/ai.svg"
+            alt="Spacexshare-Ai Image"
+          />
+        </div>
+      </div>
+    </section>
+    <%- include("partials/cta"); -%> 
+    <%-include("partials/script.ejs"); -%>
+    <!-- Footer -->
+    <%- include("partials/footer"); -%>
+  </body>
+</html>

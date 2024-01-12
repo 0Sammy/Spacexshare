@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History</title>
+  <%-include("partials/dashboardSEO")-%>
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+  <script defer src="../JS/collapsible.js"></script>
+</head>
+
+<body class="bg-[#F0F8FF] bg-opacity-50 main">
+<%- include("partials/_alert")-%>
+<%- include ("partials/sidebar")-%>
+<section>
+  <div class="flex flex-row justify-between py-3 border-b border-lightBlue">
+      <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+          <h1 class="text-lightBlue text-base sm:text-lg md:text-xl font-bold">
+            Transaction History
+          </h1>
+      </div>
+      <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+          <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+          <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+              <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+              <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+              <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+              <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+              <form action="/user/logout" method="post" class="cursor-pointer">
+                  <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+<p class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-lightBlack m-4 mt-20 mb-10">History</p>
+    <section class="px-4">
+      <div class="bg-[#FFF] sm:p-2 md:p-4 xl:p-6 rounded-md border border-[#767680] border-opacity-30">
+        <p class="text-sm sm:text-base md:text-lg xl:text-xl font-bold mb-10 mt-2 ml-2 sm:mt-0 sm:ml-0">All Transactions</p>
+        <% if (transactions.length === 0) { %>
+            <p class="text-xs sm:text-sm md:text-base xl:text-lg text-red-600">No Transactions Yet.</p>
+        <% } %>
+        <% transactions.forEach(transaction => { %>
+          <div class="flex flex-col items-center justify-center">
+            <button class="another collapsible">
+              <div class="flex items-center justify-between">
+                <% if (transaction.type == "deposit") { %>
+                  <div class="flex gap-x-1 items-center">
+                    <div class="bg-[#2DE300] bg-opacity-10 rounded-[50%] p-2">
+                      <img src="../Images/deposit.svg" alt="Deposit Icon">
+                    </div>
+                    <div class="flex flex-col gap-y-0.5">
+                      <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize">Deposit via <%= transaction.medium %></p>
+                      <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                    </div>
+                  </div>
+                <% } else if (transaction.type == "withdrawal") {%>
+                 
+                  <div class="flex gap-x-1 items-center">
+                    <div class="bg-[#DB6464] bg-opacity-10 rounded-[50%] p-2">
+                      <img src="../Images/withdraw.svg" alt="Withdraw Icon">
+                    </div>
+                    <div class="flex flex-col gap-y-0.5">
+                      <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold">Withdrawal via <%= transaction.account.walletType %></p>
+                      <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                    </div>
+                  </div>
+                  
+                <% } else if (transaction.type == "investment") { %>
+                  <div class="flex gap-x-1 items-center">
+                    <div class="bg-[#712F79] bg-opacity-30 rounded-[50%] p-2">
+                      <img src="../Images/investment.svg" alt="Invest Icon">
+                    </div>
+                    <div class="flex flex-col gap-y-0.5">
+                      <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize">Investment via <%= transaction.medium %></p>
+                      <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                    </div>
+                  </div>
+                <% } else if (transaction.type == "penalty") { %>
+                  <div class="flex gap-x-1 items-center">
+                    <div class="bg-red-600 bg-opacity-50 rounded-[50%] p-2">
+                      <img src="../Images/earn.svg" alt="Earn Icon">
+                    </div>
+                    <div class="flex flex-col gap-y-0.5">
+                      <p class="text-red-600 text-xs sm:text-sm md:text-base font-semibold capitalize">Penalty</p>
+                      <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                    </div>
+                  </div>
+                  <% } else {%>
+                    <div class="flex gap-x-1 items-center">
+                      <div class="bg-[#DBFE87] bg-opacity-50 rounded-[50%] p-2">
+                        <img src="../Images/earn.svg" alt="Earn Icon">
+                      </div>
+                      <div class="flex flex-col gap-y-0.5">
+                        <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize">Earning</p>
+                        <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                      </div>
+                    </div>
+                    <% } %>
+                  <% if (transaction.status == "pending") { %>
+                    <div class="bg-[#FEF6E7] px-2 py-1 rounded-xl">
+                      <p class="text-xs sm:text-sm xl:text-base text-[#DF930E] capitalize"><%= transaction.status %></p>
+                    </div>
+                  <% } else if (transaction.status == "successful") {%>
+                    <div class="bg-[#E6F5EE] px-2 py-1 rounded-xl">
+                      <p class="text-xs sm:text-sm xl:text-base text-[#026C3C] capitalize"><%= transaction.status %></p>
+                    </div>
+                  <% } else if (transaction.status == "failed") { %>
+                    <div class="bg-[#FCF0ED] px-2 py-1 rounded-xl">
+                      <p class="text-xs sm:text-sm xl:text-base text-[#C51D03] capitalize"><%= transaction.status %></p>
+                    </div>
+                  <% } %>
+              </div>
+              </button>
+            <div class="content">
+              <h4 class="text-xs sm:text-sm text-darkBlue md:text-base capitalize mt-5">
+                <span class="text-black">Transaction: </span> <%= transaction.type %>
+              </h4>
+              <hr>
+              <h4 class="text-xs sm:text-sm mt-2 text-darkBlue md:text-base"><span class="text-black">Amount: </span>$<%= transaction.amount %></h4>
+              <hr>
+              <% if (transaction.type == "withdrawal"){ %>
+                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize"><span class="text-black">Wallet:</span> <%= transaction.account.walletType %> </h4>
+                <hr>
+                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize"><span class="text-black">Address:</span> <%= transaction.account.address %> </h4> 
+                <hr>
+              <% } %>
+              <% if (transaction.type == "deposit") { %>
+                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize"><span class="text-black">Transaction ID:</span> <%= transaction.transactionID %> </h4>
+              <hr>
+              <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize"><span class="text-black">Deposit Method:</span> <%= transaction.medium ? transaction.medium : 'unavailable' %> </h4>
+                <hr>
+              <% } %>
+              <% if (transaction.type == "earning") { %>
+                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize flex items-center"><span class="text-black">Gain/Loss: </span><img class="h-8" src="../Images/profit.gif" alt="Gain"> Gain</h4>
+              <hr>
+              <% } %>
+              <% if (transaction.type == "investment") { %>
+                <h4 class="text-darkBlue text-xs sm:text-sm mt-2 md:text-base capitalize flex items-center"><span class="text-black">Fee: </span><img class="h-8" src="../Images/fee.gif" alt="No Fee"> No Fee </h4>
+              <hr>
+              <% } %>
+              <h4 class="text-xs sm:text-sm mt-2 md:text-base text-darkBlue">
+                <span class="text-black">Date and Time: </span><%= transaction.createdAt.toLocaleDateString() %>
+              </h4>
+              <hr>
+              <h4 class="text-xs sm:text-sm text-green-600 mt-2 md:text-base capitalize mb-5"><%= transaction.status %></h4>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+      
+    </section>
+    <%- include ("partials/script"); -%>
+</body>
+
+</html>

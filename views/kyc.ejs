@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>KYC</title>
+    <%-include("partials/dashboardSEO")-%>
+    <!-- Custom JavaScript -->
+    <script defer src="../JS/dashboard.js"></script>
+    <script defer src="../JS/kyc.js"></script>
+</head>
+<body class="main bg-[#F0F8FF] bg-opacity-50">
+<%- include("partials/_alert")-%>
+<%- include ("partials/sidebar");-%>
+<section>
+    <div class="flex flex-row justify-between py-3 border-b border-lightBlue">
+        <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+            <h1 class="text-lightBlue text-base sm:text-lg md:text-xl font-bold">
+              Verification
+            </h1>
+        </div>
+        <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+            <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+            <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+                <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+                <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+                <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+                <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+                <form action="/user/logout" method="post" class="cursor-pointer">
+                    <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<p class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-lightBlack m-4 mt-20">Identification verification (KYC)</p>
+
+<section class="p-4">
+    <form action="/user/kyc?_method=put" method="post" enctype="multipart/form-data" class="mt-10 text-xs sm:text-sm xl:text-base">
+        <div class="flex flex-col gap-y-1 mt-4">
+            <label for="fullName" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer">Full name</label>
+            <input type="text" name="fullName" id="fullName" placeholder="Enter your Full Name" class="placeholder:first-letter:uppercase placeholder:text-xs sm:placeholder:text-sm outline-none focus:border-lightBlue px-4 py-2 md:py-3 border border-[#EBEBEB] rounded-md caret-lightBlue">
+          </div>
+          <div class="flex flex-col gap-y-1 mt-4">
+            <label for="address" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer">Address</label>
+            <input type="text" name="address" id="address" placeholder="eg 123 John Doe Street" class="placeholder:text-xs sm:placeholder:text-sm outline-none focus:border-lightBlue px-4 py-2 md:py-3 border border-[#EBEBEB] rounded-md caret-lightBlue">
+          </div>
+          <div class="flex gap-x-2 xl:gap-x-5 mt-4 justify-between">
+            <div class="w-[48%] sm:w-1/2 flex flex-col gap-y-1">
+                <label for="city" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer">City</label>
+                <input type="text" name="city" id="city" placeholder="eg New York City" class="placeholder:text-xs sm:placeholder:text-sm outline-none focus:border-lightBlue px-4 py-2 md:py-3 border border-[#EBEBEB] rounded-md caret-lightBlue">
+              </div>
+            <div class="w-[48%] sm:w-1/2 flex flex-col gap-y-1">
+              <label for="state" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer">State</label>
+              <input type="text" name="state" id="state" placeholder="eg New York State" class="placeholder:text-xs sm:placeholder:text-sm outline-none focus:border-lightBlue px-4 py-2 md:py-3 border border-[#EBEBEB] rounded-md caret-lightBlue">
+            </div>
+          </div>
+          <div class="mt-4">
+            <label for="country" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer">Country</label>
+            <div class="w-full relative inline-block border border-[#EBEBEB] bg-[#FFF] rounded-md mt-2">
+            <button type="button" id="dropdownButton" class="py-2 md:py-3 w-full rounded inline-flex items-center focus:outline-none justify-between pl-6 text-gray-400">
+              <span>Select Your Country</span>
+              <svg class="w-6 h-6 transition-transform duration-500 transform dropdown-arrow" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M6.293 6.293a1 1 0 0 1 1.414 0L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414z"/>
+              </svg>
+            </button>
+            <div id="dropdownContent" class="hidden absolute border rounded mt-2 shadow-md w-full max-h-56 overflow-y-auto z-10 bg-white">
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Afghanistan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Aland Islands</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Albania</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Algeria</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">American Samoa</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Andorra</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Angola</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Anguilla</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Antarctica</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Antigua and Barbuda</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Argentina</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Armenia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Aruba</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Australia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Austria</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Azerbaijan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Bahamas</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Bahrain</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Bangladesh</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Barbados</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Belarus</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Belgium</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Belize</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Benin</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Bermuda</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Bhutan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Bolivia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Bonaire, Sint Eustatius and Saba
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Bosnia and Herzegovina
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Botswana</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Bouvet Island</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Brazil</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                British Indian Ocean Territory
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Brunei Darussalam</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Bulgaria</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Burkina Faso</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Burundi</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Cambodia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Cameroon</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Canada</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Cape Verde</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Cayman Islands</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Central African Republic
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Chad</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Chile</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">China</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Christmas Island</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Cocos (Keeling) Islands
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Colombia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Comoros</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Congo</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Congo, Democratic Republic of the Congo
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Cook Islands</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Costa Rica</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Cote D'Ivoire</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Croatia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Cuba</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Curacao</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Cyprus</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Czech Republic</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Denmark</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Djibouti</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Dominica</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Dominican Republic</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Ecuador</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Egypt</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">El Salvador</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Equatorial Guinea</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Eritrea</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Estonia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Ethiopia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Falkland Islands (Malvinas)
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Faroe Islands</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Fiji</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Finland</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">France</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">French Guiana</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">French Polynesia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                French Southern Territories
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Gabon</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Gambia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Georgia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Germany</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Ghana</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Gibraltar</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Greece</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Greenland</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Grenada</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Guadeloupe</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Guam</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Guatemala</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Guernsey</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Guinea</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Guinea-Bissau</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Guyana</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Haiti</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Heard Island and Mcdonald Islands
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Holy See (Vatican City State)
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Honduras</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Hong Kong</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Hungary</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Iceland</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">India</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Indonesia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Iran
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Iraq</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Ireland</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Isle of Man</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Israel</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Italy</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Jamaica</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Japan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Jersey</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Jordan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Kazakhstan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Kenya</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Kiribati</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Korea, Democratic People's Republic of
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Korea, Republic of</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Kosovo</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Kuwait</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Kyrgyzstan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Lao People's Democratic Republic
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Latvia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Lebanon</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Lesotho</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Liberia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Libyan Arab Jamahiriya
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Liechtenstein</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Lithuania</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Luxembourg</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Macao</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Macedonia, the Former Yugoslav
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Madagascar</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Malawi</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Malaysia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Maldives</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Mali</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Malta</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Marshall Islands</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Martinique</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Mauritania</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Mauritius</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Mayotte</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Mexico</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Micronesia
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Moldova</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Monaco</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Mongolia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Montenegro</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Montserrat</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Morocco</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Mozambique</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Myanmar</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Namibia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Nauru</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Nepal</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Netherlands</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Netherlands Antilles</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">New Caledonia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">New Zealand</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Nicaragua</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Niger</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Nigeria</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Niue</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Norfolk Island</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Northern Mariana Islands
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Norway</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Oman</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Pakistan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Palau</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Palestinian
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Panama</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Papua New Guinea</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Paraguay</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Peru</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Philippines</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Pitcairn</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Poland</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Portugal</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Puerto Rico</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Qatar</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Reunion</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Romania</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Russian Federation</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Rwanda</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Saint Barthelemy</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Saint Helena</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Saint Kitts and Nevis
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Saint Lucia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Saint Martin</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Saint Pierre and Miquelon
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Saint Vincent and the Grenadines
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Samoa</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">San Marino</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Sao Tome and Principe
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Saudi Arabia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Senegal</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Serbia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Serbia and Montenegro
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Seychelles</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Sierra Leone</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Singapore</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Sint Maarten</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Slovakia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Slovenia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Solomon Islands</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Somalia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">South Africa</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                South Georgia and the South Sandwich Islands
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">South Sudan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Spain</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Sri Lanka</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Sudan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Suriname</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Svalbard and Jan Mayen
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Swaziland</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Sweden</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Switzerland</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Syrian Arab Republic</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Taiwan, Province of China
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Tajikistan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Tanzania
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Thailand</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Timor-Leste</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Togo</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Tokelau</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Tonga</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Trinidad and Tobago</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Tunisia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Turkey</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Turkmenistan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Turks and Caicos Islands
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Tuvalu</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Uganda</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Ukraine</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">United Arab Emirates</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">United Kingdom</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">United States</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                United States Minor Outlying Islands
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Uruguay</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Uzbekistan</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Vanuatu</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Venezuela</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm"">Viet Nam</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">
+                Virgin Islands, British
+              </a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Virgin Islands, U.s.</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Wallis and Futuna</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Western Sahara</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Yemen</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Zambia</a>
+              <a class="block px-4 py-2 hover:bg-[#FFF] cursor-pointer text-sm">Zimbabwe</a>
+            </div>
+            <input type="hidden" id="chosenOption" name="country">
+            </div>
+          </div>
+          <div class="flex flex-col gap-y-1 mt-4">
+                <label for="idType" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer">Verification document</label>
+                <div class="custom-select border border-[#EBEBEB] rounded-md">
+                    <select name="idType">
+                        <option selected>Choose Your Verification Document</option>
+                        <option value="national id">
+                         National Identification Card
+                        </option>
+                        <option value="passport">Passport</option>
+                        <option value="drivers license">Drivers License</option>
+                    </select>
+                </div>
+          </div>
+        <div class="flex flex-col gap-y-1 mt-4">
+            <label for="gender" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer">Gender</label>
+            <div class="custom-select border border-[#EBEBEB] rounded-md">
+                <select name="gender" id="">
+                    <option selected>Choose Your Gender</option>
+                    <option value="male">
+                        Male
+                    </option>
+                    <option value="female">Female</option>
+                    <option value="non-binary">Non Binary</option>
+                    <option value="preferNotTo">Prefer Not To Disclose</option>
+                </select>
+            </div>
+        </div>
+        <div class="my-8 flex flex-row items-center justify-between">
+            <div class="w-[48%]">
+                <input
+                    name="photo"
+                    type="file"
+                    id="myFileInput"
+                    onchange="displayFileName()"
+                    />
+                <label for="myFileInput" id="fileInputLabel">Front Copy</label>
+            </div>
+            <div class="w-[48%]">
+                <input
+                    name="photo"
+                    type="file"
+                    id="myFileInput1"
+                    onchange="displayFileName1()"
+                />
+                <label for="myFileInput1" id="fileInputLabel1">Back Copy</label>
+            </div>
+        </div>
+        <p class="text-xs md:text-sm text-[#FF5964]">Ensure that the verification details you provided matches with the document provided.</p>
+        <div class="flex justify-end mt-6">
+            <button type="submit" class="bg-darkBlue text-white px-4 sm:px-6 md:px-8 lg:px-10 py-2 md:py-3 border border-darkBlue rounded-md text-xs md:text-sm xl:text-base hover:bg-inherit hover:text-darkBlue duration-500">
+                Verify
+            </button>
+        </div>
+    </form>
+</section>
+<%- include ("partials/script"); -%>
+</body>
+</html>

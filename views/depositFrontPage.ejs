@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Deposit</title>
+  <%-include("partials/dashboardSEO")-%>
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+  <script defer src="../JS/deposit.js"></script>
+
+</head>
+
+<body class="main bg-[#F0F8FF] bg-opacity-50">
+  <%- include("partials/_alert")%>
+  <%- include ("partials/sidebar"); -%>
+<section>
+    <div class="flex flex-row justify-between py-3 border-b border-lightBlue">
+        <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+            <h1 class="text-lightBlue text-base sm:text-lg md:text-xl font-bold">
+              Choose Deposit
+            </h1>
+        </div>
+        <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+            <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+            <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+                <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+                <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+                <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+                <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+                <form action="/user/logout" method="post" class="cursor-pointer">
+                    <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<p class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-lightBlack m-4 mt-20">Deposit</p>
+      <section class="p-4">
+        <div class="flex flex-col lg:flex-row gap-y-10 lg:gap-y-0">
+          <div class="lg:w-[30%]">
+              <div class="pl-3 flex gap-x-2 cursor-pointer text-[#9EA0A3]" id="bankButton">
+                <img src="../Images/bank.svg" alt="Bank Icon" id="bankIcon">
+                <p class="text-sm md:text-base" id="bankText">Bank Transfer</p>
+              </div>
+              <div class="pl-3 flex gap-x-2 mt-6 cursor-pointer text-[#9EA0A3]" id="cryptoButton">
+                <img src="../Images/crypto.svg" alt="Crypto Icon" id="cryptoIcon">
+                <p class="text-sm md:text-base" id="cryptoText">Cryptocurrency</p>
+              </div>
+          </div>
+          <div class="lg:w-[70%]">
+            <section id="bankOption" class="hidden">
+              <div>
+                <h1 class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold">
+                  Bank Funding Method
+                </h1>
+                <h4 class="text-sm mt-2 text-lightBlue lg:text-base">
+                  Deposit Into Your Account Using Bank Transfers And Deposit.
+                </h4>
+              </div>
+              <div>
+                <form action="/user/deposit" class="w-full flex flex-col gap-y-2 mt-10" method="post">
+                    <h4 class="text-sm text-darkBlue md:text-base">
+                      Amount To Deposit
+                    </h4>
+                    <input
+                      class="sm:w-[80%] xl:w-[70%] 2xl:w-[60%] px-8 py-3 mt-2 placeholder:text-xs md:placeholder:text-sm border-2 border-[#EBEBEB] rounded-md"
+                      type="number" name="amount" id="amount" placeholder="Minimum Of $100 " required min="100" />
+                    <input type="hidden" name="medium" value="bank">
+                    <button type="submit" class="sm:w-[80%] xl:w-[70%] 2xl:w-[60%] rounded-md text-center py-3 mt-10 duration-700 bg-[#20BF55] text-white hover:bg-white hover:text-[#20BF55] border-2 border-[#20BF55]">
+                      Deposit
+                    </button>
+                </form>
+              </div>
+            </section>
+            <section id="cryptoOption" class="hidden">
+              <div>
+                <h1 class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold">
+                  Crypto Funding Method
+                </h1>
+                <h4 class="text-sm mt-2 text-lightBlue lg:text-base">
+                  Deposit Into Your Account Using Cryptocurrency.
+                </h4>
+              </div>
+              <form action="/user/deposit" method="post" class="w-full flex flex-col mt-10">
+                  <div class="custom-select mt-2 border-2 border-[#EBEBEB] sm:w-[80%] xl:w-[70%] 2xl:w-[60%] rounded-md">
+                    <select name="coin">
+                      <option>Choose The Wallet</option>
+                      <option value="Bitcoin" selected>Bitcoin</option>
+                      <option value="Ethereum">Ethereum</option>
+                      <option value="usdt">USDT</option>
+                      <option value="dogecoin">Dogecoin</option>
+                    </select>
+                  </div>
+                  <input type="hidden" name="medium" value="crypto">
+                  <div class="mt-10">
+                    <h4 class="text-sm text-darkBlue md:text-base">
+                      Amount To Deposit
+                    </h4>
+                    <input class="w-full sm:w-[80%] xl:w-[70%] 2xl:w-[60%] px-8 py-3 mt-4 placeholder:text-xs md:placeholder:text-sm border-2 border-[#EBEBEB] rounded-md"
+                      type="number" name="amount" id="amount" placeholder="Minimum Of $100 " required min="100" />
+                  </div>
+                  <button type="submit" class="sm:w-[80%] xl:w-[70%] 2xl:w-[60%] rounded-md text-center py-3 mt-10 duration-700 bg-[#20BF55] text-white hover:bg-white hover:text-[#20BF55] border-2 border-[#20BF55]">
+                    Deposit
+                  </button>
+              </form>
+            </section>
+            <section id="default" class="block">
+              <div class="flex flex-col gap-y-5">
+                <h1 class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold">
+                  Choose Your Preferred Deposit Method
+                </h1>
+                <p class="text-sm mt-2 text-lightBlue lg:text-base">Explore our Flexible Deposit Methods, Choose Between the Bank or Cryptocurrency Methods.</p>
+              </div>
+            </section>
+          </div>
+      </section>
+      <%- include ("partials/script"); -%>
+</body>
+
+</html>

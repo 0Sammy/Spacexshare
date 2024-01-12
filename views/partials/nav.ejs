@@ -1,0 +1,64 @@
+<!-- Nav Bar -->
+<nav class="relative px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-6 bg-white dark:bg-lightBlack text-sm">
+  <!-- Flex Box -->
+  <div class="flex items-center justify-between">
+    <a href="/" class="md:hidden"><img
+      class="h-12"
+      src="../Images/Logo.png"
+      alt="This is the Spacexshare Logo"
+  /></a>
+    <!-- Logo -->
+    <div class="hidden md:flex md:gap-x-5 lg:gap-x-8 xl:gap-[2.5rem] 2xl:gap-[3rem] items-center">
+       <a href="/"><img
+          class="h-12 xl:h-16"
+          src="../Images/Logo.png"
+          alt="This is the Spacexshare Logo"
+      /></a>
+    <!-- Menu Items -->
+      <a href="/aboutUS" class="dark:text-white text-black hover:underline focus:underline font-medium duration-500"
+        >About us</a
+      >
+      <a href="/news" class="dark:text-white text-black hover:underline focus:underline font-medium duration-500"
+        >News</a
+      >
+      <a href="/faq" class="dark:text-white text-black hover:underline focus:underline font-medium duration-500"
+        >FAQs</a
+      >
+      <a href="/contact" class="dark:text-white text-black hover:underline focus:underline font-medium duration-500"
+        >Contact us</a>
+    </div>
+    <!-- Button Div-->
+    <div class="hidden md:flex md:gap-x-3 lg:gap-x-5 xl:gap-x-7 2xl:gap-x-10">
+      <a
+        href="/user/login"
+        class= "px-4  border border-lightBlue lg:px-6 xl:px-8 2xl:px-10 font-semibold py-3 rounded-md text-lightBlue hover:bg-lightBlue hover:text-white duration-500"
+        >Log in</a>
+    <a
+      href="/user/create"
+      class="px-4 lg:px-6 xl:px-8 2xl:px-10 py-3 text-white bg-lightBlue font-semibold hover:translate-x-2 duration-500 rounded-md"
+      >Sign up
+    </a>
+  </div>
+    <!-- Hamburger Icon -->
+    <button id="menu-btn" class="block hamburger bg-lightBlack dark:bg-white md:hidden">
+      <span class="hamburger-top"></span>
+      <span class="hamburger-middle"></span>
+      <span class="hamburger-down"></span>
+    </button>
+  </div>
+ <div class="absolute inset-x-0 bottom-0 h-[1px]" style="background: linear-gradient(90deg, rgba(101,100,219,1) 40%, rgba(85,221,224,1) 60%);"></div>
+  <!-- Mobile Menu -->
+  <div class="md:hidden">
+    <div
+      id="menu"
+      class="hidden text-sm bg-white dark:bg-black absolute flex-col items-center z-50 self-end py-8 mt-14 space-y-6 sm:w-auto sm:self-center left-6 right-6 rounded-md"
+    >
+    <a class="dark:text-white text-black hover:underline focus:underline font-medium duration-500" href="/aboutUs">About us</a>
+    <a class="dark:text-white text-black hover:underline focus:underline font-medium duration-500" href="/news">News</a>
+    <a class="dark:text-white text-black hover:underline focus:underline font-medium duration-500" href="/faq">FAQs</a>
+    <a class="dark:text-white text-black hover:underline focus:underline font-medium duration-500" href="/contact">Contact us</a>
+    <a href="/user/login" class="border border-lightBlue px-10 py-3 rounded-md font-semibold text-lightBlue hover:bg-lightBlue hover:text-white duration-500">Log in</a>
+    <a href="/user/create" class="px-10 py-3 text-white bg-lightBlue font-semibold hover:translate-x-2 duration-500 rounded-md">Sign up</a>
+    </div>
+  </div>
+</nav>

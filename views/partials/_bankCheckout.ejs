@@ -1,0 +1,76 @@
+<section>
+    <div class="flex flex-row justify-between py-3 border-b border-lightBlue">
+        <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+            <h1 class="text-lightBlue text-base sm:text-lg md:text-xl font-bold">
+              Checkout
+            </h1>
+        </div>
+        <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+            <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+            <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+                <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+                <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+                <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+                <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+                <form action="/user/logout" method="post" class="cursor-pointer">
+                    <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<p class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-lightBlack m-4 mt-20">Checkout Page</p>
+<section>
+    <div class="flex flex-col lg:flex-row gap-y-10 lg:gap-y-0">
+        <div class="lg:w-[30%]">
+            <div class="pl-3 flex gap-x-2 cursor-not-allowed text-lightBlue border-l-4 border-lightBlue">
+                <img src="../Images/bankHover.svg" alt="Bank Icon">
+                <p class="text-sm md:text-base" id="bankText">Bank Transfer</p>
+              </div>
+              <div class="pl-3 flex gap-x-2 mt-6 cursor-not-allowed text-[#9EA0A3] border-l-4 border-[#9EA0A3]">
+                <img src="../Images/crypto.svg" alt="Crypto Icon" id="cryptoIcon">
+                <p class="text-sm md:text-base" id="cryptoText">Cryptocurrency</p>
+              </div>
+        </div>
+        <div class="lg:w-[70%]">
+            <div class="px-4 lg:px-0">
+                <h1 class="text-lg sm:text-xl md:text-2xl xl:text-3xl">
+                    Send Your Payment To
+                </h1>
+                <div class="mt-10">
+                    <p class="text-xs capitalize mt-4">Account Name</p>
+                    <h4 class="text-lg md:text-xl text-lightBlue font-semibold">Drive Wealth LLC</h4>
+                    <p class="text-xs capitalize mt-4">Account Number</p>
+                    <div class="flex gap-x-2 items-center">
+                        <h4 class="text-lg md:text-xl text-lightBlue font-semibold" id="wallet">10000365045370</h4>
+                        <img src="../Images/copyHover.svg" alt="Copy Icon" onclick="copy()" class="cursor-pointer">
+                    </div>
+                    
+                    <p class="text-xs capitalize mt-4">Bank Name</p>
+                    <h4 class="text-lg md:text-xl text-lightBlue font-semibold">JP Morgan Chase Bank</h4>
+                </div>
+                <h4 class="text-xs md:text-sm mt-4 text-gray-500">
+                    Required Information
+                </h4>
+                <form action="/user/checkout" method="post" class="sm:w-[80%] xl:w-[70%] 2xl:w-[60%]">
+                    <input type="hidden" name="amount" value="<%= amount %>">
+                    <input type="hidden" name="medium" value="<%= medium %>">
+                    <input
+                        class="w-full mt-4 px-8 py-3 placeholder:text-center placeholder:text-sm border-2 border-darkBlue rounded-md"
+                        type="text" name="transactionID" id="transaction-ID" placeholder="Input Your Transaction ID Here" />
+                    <p class="text-xs font-extralight capitalize text-darkBlue mt-4">
+                        Please include your transaction ID for seamless verification.
+                    </p>
+                    <div class="flex gap-x-5 text-center text-white mt-4">
+                        <input
+                            class="w-[50%]  py-3 duration-500 capitalize bg-red-600 hover:bg-[#FFF] hover:text-darkBlue hover:border hover:border-darkBlue hover:cursor-pointer rounded-md"
+                            type="submit" value="cancel" name="action">
+                        <input
+                            class="w-[50%] ml-4 py-3 duration-500 capitalize bg-[#20BF55] hover:bg-[#FFF] hover:text-darkBlue hover:border hover:border-darkBlue hover:cursor-pointer rounded-md"
+                            type="submit" value="confirm" name="action">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

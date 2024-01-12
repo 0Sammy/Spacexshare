@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <%-include("partials/dashboardSEO")-%>
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+  </head>
+  <body class="bg-[#E3F2FD] bg-opacity-10 main">
+    <%- include ("partials/sidebar"); -%>
+  <section>
+      <div class="flex flex-row justify-between py-3 border-b border-lightBlue">
+          <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+              <h1 class="text-lightBlue text-base sm:text-lg md:text-xl font-bold">
+                Contact Us
+              </h1>
+          </div>
+          <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+              <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+              <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+                  <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+                  <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+                  <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+                  <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+                  <form action="/user/logout" method="post" class="cursor-pointer">
+                      <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
+<div class="p-4 mt-20 flex flex-col gap-y-2">
+  <p class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-lightBlack">Help Desk</p>
+  <p class="text-[#020100] text-xs sm:text-sm xl:text-base">Contact us of any issues regarding your account.</p>
+</div>
+    <section class="p-4">
+          <form class="flex flex-col gap-y-2" action="mailto:admin@spacexshare-ai.com" method="post" enctype="text/plain">
+            <label for="email" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer">Email</label>
+            <input
+              class="px-8 py-2 md:py-3 placeholder:text-xs md:placeholder:text-sm border-[#EBEBEB] border rounded-md  focus:outline-none focus:border-lightBlue"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter Your Email Address"
+              required
+            />
+            <label for="email" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer mt-4">Subject</label>
+            <input class="px-8 py-2 md:py-3 placeholder:text-xs md:placeholder:text-sm border-[#EBEBEB] border rounded-md  focus:outline-none focus:border-lightBlue" type="text"
+            name="subject" id="subject" placeholder="Enter Your Subject" required/>
+            <label for="email" class="text-xs md:text-sm lg:text-xs xl:text-sm cursor-pointer mt-4">Message</label>
+            <textarea
+              required
+              name="message"
+              id="message"
+              placeholder="Enter Your Message Here"
+              class="px-8 py-2 md:py-3 placeholder:text-xs md:placeholder:text-sm h-60 border-[#EBEBEB] border rounded-md focus:outline-none focus:border-lightBlue resize-none"
+            ></textarea>
+              <input
+              type="submit"
+                class="py-2 md:py-3 mt-10 duration-500 bg-darkBlue text-white hover:text-darkBlue cursor-pointer border border-darkBlue hover:bg-[#FFF] rounded-md"
+              value =Send />
+          </form>
+    </section>
+    <%- include ("partials/script"); -%>
+  </body>
+</html>

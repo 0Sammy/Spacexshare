@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout</title>
+  <%-include("partials/dashboardSEO")-%>
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+  <script defer src="../JS/checkout.js"></script>
+</head>
+
+<body class="bg-[#F0F8FF] bg-opacity-50 main">
+  <%- include("partials/_alert")%>
+  <%- include ("partials/sidebar")-%>
+
+      <% if (medium==="bank" ) { %>
+
+        <%- include ("partials/_bankCheckout"); -%>
+
+
+          <% } else if (medium==="crypto" ) { %>
+
+            <%- include ("partials/_cryptoCheckout"); -%>
+              <% } %>
+
+
+                <%- include ("partials/script"); -%>
+                  
+</body>
+
+</html>

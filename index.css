@@ -1,0 +1,309 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* The Vertical Text For Mode Changing */
+.vertical-text {
+  writing-mode: vertical-lr; 
+  transform: rotate(180deg); 
+}
+/* The Nav Bar For Small Screen */
+.hamburger {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  transition: all 0.25s;
+  position: relative;
+  border-radius: 0.3rem;
+}
+.hamburger-top,
+.hamburger-middle,
+.hamburger-down {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  width: 25px;
+  height: 3px;
+  background-color: #145CCB;
+  transform: rotate(0);
+  transition: all 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+.hamburger-down {
+  transform: translateY(14px);
+}
+.open {
+  transform: rotate(90deg);
+  transform: translateY(0px);
+}
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translate(6px);
+}
+.open .hamburger-middle {
+  display: none;
+}
+.open .hamburger-down {
+  transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+/* Scroll Bar */
+/* width */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background-color: #0d47a1;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #000;
+}
+/* Custom style for customized scroll bar */
+
+.special::-webkit-scrollbar {
+  height: 5px;
+}
+
+.special::-webkit-scrollbar-thumb {
+  background-color: #DBFE87;
+  border-radius: 2px;
+}
+.special::-webkit-scrollbar-thumb:hover {
+  background-color: #b3d85d;
+}
+
+.special::-webkit-scrollbar-track {
+  background: #231f20;
+}
+/* Pages Button */
+.aboutUs button {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.3rem 0.8rem 0.9rem;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  border: none;
+  letter-spacing: 0.05rem;
+}
+
+.aboutUs button svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.aboutUs button span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.aboutUs button:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+.aboutUs button:hover span {
+  transform: translateX(7px);
+}
+/* Frequently Asked Questions */
+.collapsible {
+  background-color: #0d47a1;
+  cursor: pointer;
+  padding: 18px;
+  width: 90%;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border: 2px solid #0d47a1;
+}
+
+.active,
+.collapsible:hover {
+  background-color: white;
+  transition-duration: 500ms;
+  color: black;
+}
+
+.collapsible:after {
+  content: "\002B";
+  color: black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+.active .content {
+  padding-top: 18px;
+}
+.content {
+  padding: 0 18px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  background-color: white;
+  width: 90%;
+  border: 1px solid #7676801a;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.another.collapsible {
+  padding: 18px 0;
+  border: none;
+  border-radius: 0;
+  background-color: inherit;
+  color: #030346;
+  border-bottom: 1px solid #7676801a;
+}
+.another.collapsible:after {
+  content: "";
+}
+
+
+/* Main-Page */
+.main {
+  width: calc(100% - 300px);
+  float: right;
+}
+@media screen and (max-width: 1023px) {
+  .main {
+    width: 100%;
+  }
+}
+/* Create Account Page */
+/* Password Strength */
+#password-strength {
+  height: 5px;
+  display: block;
+  background-color: #ccc;
+}
+#password-strength span {
+  display: block;
+  height: 5px;
+  border-radius: 2px;
+  transition: all 500ms ease;
+}
+.strength-0 span {
+  background-color: red;
+  width: 5%;
+}
+.strength-1 span {
+  background-color: orangered;
+  width: 25%;
+}
+.strength-2 span {
+  background-color: orange;
+  width: 50%;
+}
+.strength-3 span {
+  background-color: yellowgreen;
+  width: 75%;
+}
+.strength-4 span {
+  background-color: green;
+  width: 100%;
+}
+/* Form Submit Button Cursors */
+.cursorDisallowed{
+  cursor: not-allowed;
+}
+.cursorPointer{
+  cursor: pointer;
+}
+
+/* Deposit Page */
+.custom-select {
+  position: relative;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: white;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #0f2331 transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #0f2331 transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,
+.select-selected {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* KYC */
+#myFileInput,
+#myFileInput1 {
+  display: none;
+}
+
+#fileInputLabel,
+#fileInputLabel1 {
+  background-color: #DBFE87;
+  color: #000;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: 1px solid #DBFE87;
+  border-radius: 0.2rem;
+}
+

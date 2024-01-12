@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Found</title>
+    <%-include("partials/SEO");-%>
+</head>
+
+<body>
+    <%- include("partials/nav"); -%>
+        <section class="flex flex-col items-center justify-center text-center h-screen">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black">Opps!</h1>
+            <h3 class="font-bold mt-5 uppercase">404 - page not found</h3>
+            <p class="text-sm mt-10 capitalize">The link you followed might have been removed or had it's name changed or is
+                temporarily unavailable.</p>
+            <a href="/" class="mt-10 text-lightBlue capitalize">go to
+                homepage</a>
+        </section>
+        <!-- Custom JS -->
+    <script src="../JS/index.js"></script>
+    <%-include("partials/script");-%>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<section>
+    <div class="flex flex-row items-center justify-center gap-x-5 md:gap-x-0 md:justify-between py-3 border-b border-lightBlue">
+        <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+            <p class="text-xs md:text-sm font-medium">Welcome</p>
+            <h1 class="text-lightBlue text-sm font-bold md:text-xl">
+                <%= user.lastName %>.
+            </h1>
+        </div>
+        <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+            <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+            <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+                <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+                <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+                <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+                <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+                <form action="/user/logout" method="post" class="cursor-pointer">
+                    <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

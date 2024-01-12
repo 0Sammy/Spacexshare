@@ -1,0 +1,76 @@
+<%if(message.error) {%>
+  <div class="flex w-full items-center justify-center">
+    <div
+      id="failureOverlay"
+      class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+    ></div>
+  
+    <div
+      id="failurePopup"
+      class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
+    >
+      <span
+        onclick="failureClosePopupBtnClick()"
+        class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+        >&times;</span
+      >
+      <img class="mx-auto w-20" src="../../Images/wrong.svg" alt="Wrong Icon" />
+      <h2 class="mt-2 text-center text-2xl font-semibold text-red-500">
+        Failure!
+      </h2>
+      <p class="text-center text-sm capitalize text-gray-800">
+        <%=message.error%>
+      </p>
+    </div>
+  </div>
+<%} else if(message.success){%>
+  <div class="flex w-full items-center justify-center">
+    <div
+      id="overlay"
+      class="overlay fixed inset-0 z-20 bg-black bg-opacity-70"
+    ></div>
+  
+    <div
+      id="successPopup"
+      class="fixed top-[30%] z-30 w-[20rem] rounded bg-white p-6 shadow-lg"
+    >
+      <span
+        id="closePopupBtn"
+        onclick="closePopupBtnClick()"
+        class="absolute top-2 right-2 cursor-pointer text-2xl text-gray-500"
+        >&times;</span
+      >
+      <img class="mx-auto" src="../../Images/correct.svg" alt="Correct Icon" />
+      <h2 class="mt-2 text-center text-2xl font-semibold text-green-500">
+        Success!
+      </h2>
+      <p class="text-center text-sm capitalize text-gray-800">
+        <%=message.success%>
+      </p>
+    </div>
+  </div>
+<%}%>
+
+<!-- For the popups -->
+<script>
+  const successPopup = document.getElementById("successPopup");
+  const overlay = document.getElementById("overlay");
+
+  const closePopupBtnClick = () => {
+    successPopup.classList.add("hidden");
+    overlay.classList.add("hidden");
+  };
+
+  const failurePopup = document.getElementById("failurePopup");
+  const failureOverlay = document.getElementById("failureOverlay");
+
+  const failureClosePopupBtnClick = () => {
+    failurePopup.classList.add("hidden");
+    failureOverlay.classList.add("hidden");
+  };
+</script>
+
+
+
+
+

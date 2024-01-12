@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dashboard</title>
+    <%-include("partials/dashboardSEO")-%>
+    <!-- Custom JavaScript -->
+    <script defer src="/JS/referral.js"></script>
+    <script defer src="/JS/dashboard.js"></script>
+    <script defer src="/JS/dashboard1.js"></script>
+</head>
+<body class="relative main bg-[#F0F8FF] bg-opacity-50">
+    <%- include("partials/_alert")-%>
+    <%- include("partials/sidebar")-%>
+    <%- include("partials/heading")-%>
+<section>
+    <div>
+        <% if(user.isVerified !== true) { %>
+        <div class="w-full bg-[#0E48A1] px-4 py-2 flex justify-between">
+            <div class="flex gap-x-2 items-center">
+                <img src="../Images/dashboardKYC.svg" alt="KYC Icon">
+                <p class="hidden md:block text-limeGreen text-xs lg:text-sm">Unlock exclusive benefits by verifying your Account</p>
+                <p class="md:hidden text-limeGreen text-xs">Verify your Account</p>
+            </div>
+            <a href="/user/kyc" class="px-2 sm:px-4 md:px-6 py-2 md:py-3 bg-[#FFF] text-lightBlue text-xs lg:text-sm border border-[#FFF] rounded-sm md:rounded-md hover:duration-500 shadow-sm hover:bg-inherit hover:text-white">
+              Get verified  
+            </a>
+        </div>
+        <% } %>
+    </div>
+    <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-lightBlack m-4">Dashboard</p>
+    <div class="flex flex-col-reverse lg:flex-row items-center gap-y-5 lg:gap-y-0 lg:items-start lg:justify-between px-4 mt-8 lg:gap-x-5">
+        <div class="w-full lg:w-[50%]">
+            <p class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-lightBlack">Your activity</p>
+            <div class="bg-[#FFFFFF] rounded-2xl mt-6 border border-[#767680] border-opacity-10 p-4">
+                <p class="text-xs text-[#4F4F4F] pb-3 border-b border-[#4F4F4F] border-opacity-10">This shows the summary of your Activities</p>
+                <div class="flex justify-between gap-x-5 overflow-x-auto mt-4 special">
+                    <div class="w-[50%] h-40 min-w-[10rem] rounded-xl border border-[#767680] border-opacity-10 mb-2 flex flex-col gap-y-2 items-center justify-center">
+                        <h1 class="text-6xl font-bold text-[#20BF55]"><%= deposits.length %></h1>
+                        <p class="text-sm md:text-base font-semibold text-[#020100]">Deposit</p>
+                    </div>
+                    <div class="w-[50%] h-40 min-w-[10rem] rounded-xl border border-[#767680] border-opacity-10 mb-2 flex flex-col gap-y-2 items-center justify-center">
+                        <h1 class="text-6xl font-bold text-[#FF5964]"><%= withdrawals.length %></h1>
+                        <p class="text-sm md:text-base font-semibold text-[#020100]">Withdrawal</p>
+                    </div>
+                </div>
+                <div class="flex justify-between gap-x-5 overflow-x-auto mt-2 special">
+                    <div class="w-[50%] h-40 min-w-[10rem] rounded-xl border border-[#767680] border-opacity-10 mb-2 flex flex-col gap-y-2 items-center justify-center">
+                        <h1 class="text-6xl font-bold text-lightBlue"><%= investments.length %></h1>
+                        <p class="text-sm md:text-base font-semibold text-[#020100]">Investments</p>
+                    </div>
+                    <div class="w-[50%] h-40 min-w-[10rem] rounded-xl border border-[#767680] border-opacity-10 mb-2 flex flex-col gap-y-2 items-center justify-center">
+                        <h1 class="text-6xl font-bold text-[#712F79]"><%= user.referrals.length %></h1>
+                        <p class="text-sm md:text-base font-semibold text-[#020100]">Referral</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full lg:w-[50%]">
+            <p class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-lightBlack">Account</p>
+            <div class="flex gap-x-3 xl:gap-x-5 special overflow-x-auto">
+                <div class="w-[50%] bg-[#FFFFFF] h-48 rounded-xl mt-6 border border-[#767680] border-opacity-10 min-w-[10rem] mb-4 p-2 md:p-4">
+                    <div class="relative flex justify-between items-center">
+                        <div class="rounded-[50%] p-2 md:p-3 bg-[#2DE300] bg-opacity-10">
+                            <img src="../Images/deposit.svg" alt="Deposit Icon">
+                        </div>
+                        <img id="balanceMenuIcon" src="../Images/more.svg" alt="More Icon" class="cursor-pointer">
+                        <div id="balanceMenu" class="hidden absolute bg-[#F0F8FF] bg-opacity-50 top-8 right-0 rounded-sm py-2 px-4 z-10">
+                            <a class="text-xs md:text-sm lg:text-xs xl:text-sm font-semibold hover:text-lightBlue duration-500" href="/user/deposit">Add Balance</a>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-10">
+                        <div class="flex flex-col gap-y-1">
+                            <p class="text-[0.7rem] md:text-xs text-[#020100] font-semibold">Total deposit</p>
+                            <p class="number text-[0.9rem] sm:text-lg lg:text-xl xl:text-3xl font-bold text-[#20BF55] noasterisks">+$<%= deposits.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
+                            <p class="number1 hidden">+$<%= deposits.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
+                        </div>
+                        <img src="../Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                    </div>
+                </div>
+                <div class="w-[50%] bg-[#FFFFFF] h-48 rounded-xl mt-6 border border-[#767680] border-opacity-10 min-w-[10rem] mb-4 p-2 md:p-4">
+                    <div class="relative flex justify-between items-center">
+                        <div class="rounded-[50%] p-2 md:p-3 bg-[#DB6464] bg-opacity-10">
+                            <img src="../Images/withdraw.svg" alt="Withdraw Icon">
+                        </div>
+                        <img id="withdrawMenuIcon" src="../Images/more.svg" alt="More Icon" class="cursor-pointer">
+                        <div id="withdrawMenu" class="hidden absolute bg-[#F0F8FF] bg-opacity-50 top-8 right-0 rounded-sm py-2 px-4 z-10">
+                            <a class="text-xs md:text-sm lg:text-xs xl:text-sm font-semibold hover:text-lightBlue duration-500" href="/user/withdraw">Withdraw Now</a>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-10">
+                        <div class="flex flex-col gap-y-1">
+                            <p class="text-[0.7rem] md:text-xs text-[#020100] font-semibold">Total withdraw</p>
+                            <p class="number text-[0.9rem] sm:text-lg lg:text-xl xl:text-3xl font-bold text-[#FF5964] noasterisks">-$<%= withdrawals.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
+                            <p class="hidden number1">-$<%= withdrawals.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
+                        </div>
+                        <img src="../Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col-reverse lg:flex-row items-center gap-y-5 lg:gap-y-0 lg:items-start lg:justify-between px-4 mt-8 lg:gap-x-5">
+        <div class="w-full lg:w-[50%]">
+            <div class="flex justify-between items-center">
+              <p class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-lightBlack">Transaction history</p>  
+              <p class="text-lightBlue text-[0.6rem] sm:text-xs font-medium">Your last three transactions</p>
+            </div>
+            <div class="bg-[#FFFFFF] rounded-2xl mt-6 border border-[#767680] border-opacity-10 p-4">
+                <% if (lastThreeTransactions.length === 0) { %>
+                    <p class="text-xs sm:text-sm md:text-base xl:text-lg text-red-600">No Transactions Yet.</p>
+                <% } %>
+                <% lastThreeTransactions.forEach(transaction => { %>
+                    <% if (transaction.type == "deposit") { %>
+                    <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
+                    <div class="flex gap-x-1 items-center">
+                        <div class="bg-[#2DE300] bg-opacity-10 rounded-[50%] p-2">
+                            <img src="../Images/deposit.svg" alt="Deposit Icon">
+                        </div>
+                
+                        <div class="flex flex-col gap-y-0.5">
+                            <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize">Deposit via <%= transaction.medium %></p>
+                            <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                        </div>
+                    </div>
+                        <p class="text-[#20BF55] text-xs sm:text-sm md:text-base font-bold">+$<%= transaction.amount %></p>
+                    </div>
+                    <% } else if (transaction.type == "withdrawal") { %>
+                    <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
+                    <div class="flex gap-x-1 items-center">
+                        <div class="bg-[#DB6464] bg-opacity-10 rounded-[50%] p-2">
+                            <img src="../Images/withdraw.svg" alt="Withdraw Icon">
+                        </div>
+                        <div class="flex flex-col gap-y-0.5">
+                            <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold">Withdrawal via <%= transaction.account.walletType %></p>
+                            <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                        </div>
+                    </div>
+                        <p class="text-[#FF5964] text-xs sm:text-sm md:text-base font-bold">-$<%= transaction.amount %></p>
+                    </div>
+                    <% } else if (transaction.type == "investment") { %>
+                        <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
+                            <div class="flex gap-x-1 items-center">
+                                <div class="bg-[#712F79] bg-opacity-30 rounded-[50%] p-2">
+                                    <img src="../Images/investment.svg" alt="Invest Icon">
+                                </div>
+                                <div class="flex flex-col gap-y-0.5">
+                                    <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold capitalize"><%= transaction.plan %> Plan Investment</p>
+                                    <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                                </div>
+                            </div>
+                            <p class="text-[#712F79] text-xs sm:text-sm md:text-base font-bold">-$<%= transaction.amount %></p>
+                        </div>
+                    <% } else if (transaction.type == "penalty"){ %>
+                        <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
+                            <div class="flex gap-x-1 items-center">
+                                <div class="bg-red-600 bg-opacity-50 rounded-[50%] p-2">
+                                    <img src="../Images/earn.svg" alt="Earn Icon">
+                                </div>
+                                <div class="flex flex-col gap-y-0.5">
+                                    <p class="text-red-600 text-xs sm:text-sm md:text-base font-semibold">Penalty</p>
+                                    <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                                </div>
+                            </div>
+                            <p class="text-red-600 text-xs sm:text-sm md:text-base font-bold">-$<%= transaction.amount %></p>
+                        </div>
+                        <% } else { %>
+                            <div class="flex items-center justify-between py-4 border-b border-[#767680] border-opacity-10">
+                                <div class="flex gap-x-1 items-center">
+                                    <div class="bg-[#DBFE87] bg-opacity-50 rounded-[50%] p-2">
+                                        <img src="../Images/earn.svg" alt="Earn Icon">
+                                    </div>
+                                    <div class="flex flex-col gap-y-0.5">
+                                        <p class="text-[#141619] text-xs sm:text-sm md:text-base font-semibold">Earning</p>
+                                        <p class="text-[#9EA0A3] text-[0.6rem] md:text-xs"><%= transaction.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                                    </div>
+                                </div>
+                                <p class="text-[#DBFE87] text-xs sm:text-sm md:text-base font-bold">+$<%= transaction.amount %></p>
+                            </div>
+                            <% } %>
+                    <% }) %>
+                </div>
+                <div class="my-6 flex justify-end gap-x-2 items-center">
+                    <a href="/user/transactions" class="text-xs text-[#0E48A1]">View All</a>
+                    <img src="../Images/arrow-right.svg" alt="Right Arrow">
+                </div>
+        </div>
+        <div class="w-full lg:w-[50%] lg:-mt-60">
+            <p class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-lightBlack">Account summary</p>
+            <div class="bg-[#FFFFFF] rounded-2xl mt-6 border border-[#767680] border-opacity-10 px-4 py-8">
+                <p class="text-xs text-[#020100]">Available Balance</p>
+                <div class="flex gap-x-1 mt-2 border-b border-[#767680] border-opacity-10 pb-4">
+                    <p class="number text-lg sm:text-xl lg:text-2xl xl:text-4xl font-bold text-lightBlue noasterisks">$<%= user.balance.toLocaleString() %></p>
+                    <p class="hidden number1">$<%= user.balance.toLocaleString() %></p>
+                    <img src="../Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                </div>
+                <div class="flex flex-col gap-y-4 mt-4">
+                    <div class="flex justify-between">
+                        <p class="text-xs sm:text-sm lg:text-base text-[#9EA0A3]">Reg Date</p>
+                        <p class="text-xs sm:text-sm lg:text-base text-[#06121B] font-bold"><%= (user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></p>
+                    </div>
+                    <div class="flex justify-between">
+                        <p class="text-xs sm:text-sm lg:text-base text-[#9EA0A3]">Investment Count</p>
+                        <p class="text-xs sm:text-sm lg:text-base text-[#06121B] font-bold"><%= investments.length %></p>
+                    </div>
+                    <div class="flex justify-between">
+                        <p class="text-xs sm:text-sm lg:text-base text-[#9EA0A3]">Total Earnings</p>
+                        <p class="text-xs sm:text-sm lg:text-base text-[#06121B] font-bold">+$<%=earnings.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
+                    </div>
+                    <div class="flex justify-between">
+                        <p class="text-xs sm:text-sm lg:text-base text-[#9EA0A3]">Last Withdrawal</p>
+                        <p class="text-xs sm:text-sm lg:text-base text-[#06121B] font-bold">-$<%= (withdrawals.length > 0 ? withdrawals.at(-1).amount : 0).toLocaleString() %></p>
+                    </div>
+                    <div class="flex justify-between">
+                        <p class="text-xs sm:text-sm lg:text-base text-[#9EA0A3]">Last Deposit</p>
+                        <p class="text-xs sm:text-sm lg:text-base text-[#06121B] font-bold">+$<%=(deposits.length > 0 ? deposits.at(-1).amount : 0).toLocaleString() %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-[#FFFFFF] rounded-2xl mt-6 border border-[#767680] border-opacity-10 px-4 py-8">
+                <p class="text-xs sm:text-sm lg:text-base">Earn up to <span class="text-[#FF5964] font-bold text-sm sm:text-base lg:text-lg">10%</span> on referral deposit</p>
+                    <div class="border border-[#767680] border-opacity-40 rounded-sm p-2 mt-4 cursor-pointer" onclick="copy()">
+                        <p class="text-xs sm:text-sm xl:text-base">https://www.Spacexshare-ai.com/user/create?ref=<%= user.userId %></p> 
+                    </div>
+                    <p class="text-[0.6rem] mt-1">Click to copy</p>
+            </div>
+        </div>
+    </div>
+    
+</section>
+<%- include("partials/script"); -%>
+</body>
+
+</html>

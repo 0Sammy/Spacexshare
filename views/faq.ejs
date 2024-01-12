@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequently Asked Questions</title>
+    <%-include("partials/SEO")-%>
+    <script defer src="../JS/faq.js"></script>
+  </head>
+  <body class="bg-white dark:bg-lightBlack">
+    <!-- Nav Bar -->
+    <%- include("partials/nav"); -%>
+    <section id="Top">
+      <div class="w-full relative h-4/5">
+        <div class="w-full absolute bg-darkBlue dark:bg-lightBlue h-96"></div>
+        <div
+          class="w-full absolute flex flex-col items-center justify-center h-96"
+        >
+          <h1
+            class="dark:text-black text-white text-4xl md:text-5xl text-center font-bold"
+          >
+            FAQs About Spacexshare-Ai
+          </h1>
+          <p
+            class="text-xs md:text-sm dark:text-black text-white capitalize mt-2 text-center p-1"
+          >
+            Find answers to commonly asked questions about investing in
+            Spacexshare-Ai.
+          </p>
+          <div class="aboutUs mt-6 space-x-4 flex px-2">
+            <a href="/user/create"
+              ><button class="duration-500 text-xs uppercase font-semibold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    fill="currentColor"
+                    d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                  ></path>
+                </svg>
+                <span>Open A Free Account</span>
+              </button></a
+            >
+            <a href="/news"
+              ><button class="duration-500 text-xs uppercase font-semibold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    fill="currentColor"
+                    d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                  ></path>
+                </svg>
+                <span>Read some news</span>
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="mt-96 p-6 pb-20 flex flex-col space-y-8 bg-darkGray">
+        <div class="mt-20 ml-4 text-left md:text-center">
+          <h1 class="text-3xl font-bold text-black dark:text-white">
+            Frequently Asked Questions On Spacexshare-Ai
+          </h1>
+          <p class="font-bold mt-2 text-black dark:text-white">
+            Get answers to your queries regarding Spacexshare-Ai and investment
+            opportunities.
+          </p>
+        </div>
+        <div
+          class="flex flex-col items-center justify-center text-sm md:text-base text-white dark:text-black"
+        >
+          <button
+            class="collapsible dark:bg-lightBlue dark:border-lightBlue mt-20 capitalize"
+          >
+            What Is Spacexshare-Ai?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Spacexshare-Ai is a company that provides an investment platform for
+              individuals and organizations to invest in various assets such as
+              cryptocurrencies, stocks, and more.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            How does Spacexshare-Ai work?
+          </button>
+          <div class="content">
+            <p class="text-darkBlue dark:text-black leading-loose capitalize">
+              Spacexshare-Ai allows users to create an account, deposit funds, and
+              use those funds to purchase cryptocurrencies and other financial
+              assets. Users can monitor their investments in real-time and
+              withdraw both their profit and capital whenever they want.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            Is Spacexshare-Ai safe?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Yes, Spacexshare-Ai takes security seriously and implements
+              industry-standard security measures to protect user accounts and
+              transactions. However, as with any financial investment, there is
+              always a degree of risk involved, and we have our damage control
+              systems.
+            </p>
+          </div>
+
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            What cryptocurrencies are available on Spacexshare-Ai?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Spacexshare-Ai offers a range of cryptocurrencies for trading,
+              including Bitcoin, Ethereum, USDT, Dogecoin and more.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            What payment methods are accepted on Spacexshare-Ai?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Users can deposit funds using bank transfers, credit or debit
+              cards, and other payment methods, like cryptocurrencies depending
+              on their location.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            Is there a minimum deposit required to use Spacexshare-Ai?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Yes, the minimum deposit amount varies depending on the user's
+              location and the payment method they choose. However, the minimum
+              deposit amount is generally quite low, making it accessible for
+              most users.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            What fees does Spacexshare-Ai charge?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Spacexshare-Ai charges little or no trading fee for any transaction.
+              This includes deposit, withdrawal, investing, bonus and all. If
+              you are charged any fee, it is from the blockchain or from your
+              wallet providers.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            Can I withdraw my funds from Spacexshare-Ai?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Yes, users can withdraw their funds from Spacexshare-Ai at any time.
+              You can withdraw both your capital and your profit together.
+              Unlike other investment companies, we don't have any restrictions.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            Does Spacexshare-Ai offer any educational resources for users?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Yes, Spacexshare-Ai offers a range of educational resources for
+              users, including tutorials, webinars, and articles about
+              cryptocurrency and investing. Simply reach out to our customer
+              representatives, and they will assist you IMMEDIATELY.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            What customer support is available for Spacexshare-Ai users?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Spacexshare-Ai provides customer support through a variety of
+              channels, including multiple email options, live chat, and phone
+              support. Users can also access a comprehensive FAQ section on the
+              Spacexshare-Ai website for quick answers to common questions.
+            </p>
+          </div>
+          <button
+            class="collapsible mt-4 dark:bg-lightBlue dark:border-lightBlue capitalize"
+          >
+            Are there other ways Spacexshare-Ai generate revenue?
+          </button>
+          <div class="content">
+            <p class="leading-loose text-darkBlue dark:text-black capitalize">
+              Yes, we also engage in mining operations and diverse
+              investments worldwide, ensuring both profitability and investors' fund
+              security. Our mining activities encompasses gold, diamond, platinum, crude-oil, tin etc. We also invest heavily in Agriculture and Real Estate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include("partials/cta"); -%> 
+    <%-include("partials/script.ejs"); -%>
+    <!-- Footer -->
+    <%- include("partials/footer"); -%>
+
+  </body>
+</html>

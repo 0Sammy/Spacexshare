@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Withdrawal</title>
+  <%-include("partials/dashboardSEO")-%>
+  <!-- Custom JavaScript -->
+  <script defer src="../JS/dashboard.js"></script>
+  <script defer src="../JS/deposit.js"></script>
+</head>
+
+<body class="bg-[#F0F8FF] bg-opacity-50 main">
+<%- include("partials/_alert")-%>
+<%- include ("partials/sidebar")-%>
+<section>
+  <div class="flex flex-row justify-between py-3 border-b border-lightBlue">
+      <div class="ml-14 lg:ml-4 flex gap-x-2 items-center">
+          <h1 class="text-lightBlue text-base sm:text-lg md:text-xl font-bold">
+            Make A Withdrawal
+          </h1>
+      </div>
+      <div id="toggleDropDownBtn" class="flex flex-row items-center relative pr-2">
+          <img class="w-8 sm:w-10 md:w-14 cursor-pointer" src="/Images/profilePicture.png" alt="User-Icon"/>
+          <div id="optionBox" class="hidden absolute h-44 w-32 bg-dashboardWhite right-2 top-12 rounded-md z-40 ease-in-out duration-500 px-4 py-2 shadow-xl">
+              <a href="/user/kyc"><p class="text-sm mt-2.5 hover:text-black text-darkBlue duration-500">Get Verified</p></a>
+              <a href="/user/invest"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Invest</p></a>
+              <a href="/user/profile" ><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Edit Profile </p></a>
+              <a href="/support"><p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Help</p></a>
+              <form action="/user/logout" method="post" class="cursor-pointer">
+                  <p class="text-sm mt-2.5 text-darkBlue hover:text-black duration-500">Log out</p>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+<p class="text-lg sm:text-xl md:text-2xl xl:text-3xl font-bold text-lightBlack m-4 mt-20">Withdrawal</p>
+<section class="p-4">
+  <div class="flex flex-col lg:flex-row gap-y-10 lg:gap-y-0">
+    <div class="lg:w-[30%]">
+      <div class="pl-3 flex gap-x-2 mt-6 cursor-none border-l-4 text-lightBlue border-[#EBEBEB]">
+        <img src="../Images/cryptoHover.svg" alt="Crypto Icon">
+        <p class="text-sm md:text-base font-semibold">Cryptocurrency</p>
+      </div>
+    </div>
+    <div class="lg:w-[70%]">
+      <h4 class="text-sm mt-6 md:text-base"> Account Balance <span class="text-base text-darkBlue md:text-xl font-bold">$<%=user.balance %></span></h4>
+      <form action="/user/withdraw" method="post" class="sm:w-[80%] xl:w-[70%] 2xl:w-[60%] mt-10">
+        <div class="custom-select mt-2 border-2 border-[#EBEBEB] rounded-md">
+          <select name="wallet">
+            <option value="">Choose Your Wallet</option>
+            <option value="Bitcoin" selected>Bitcoin</option>
+            <option value="Ethereum">Ethereum</option>
+            <option value="USDT">USDT</option>
+            <option value="Doge">Doge</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-y-2 mt-4">
+          <h4 class="text-sm text-darkBlue md:text-base mt-4">
+            Amount To Withdraw
+          </h4>
+          <input class="w-full py-3 mt-2 placeholder:text-xs md:placeholder:text-sm px-6 border-2 border-[#EBEBEB] rounded-md" type="number" name="amount" id="amount" placeholder="Minimum Of $5" min="5" required />
+          <h4 class="text-sm text-darkBlue md:text-base mt-4">
+            Wallet Address
+          </h4>
+          <input class="w-full py-3 mt-2 placeholder:text-xs md:placeholder:text-sm px-6 border-2 border-[#EBEBEB] rounded-md" type="text" name="address" id="address" placeholder="Input Your Wallet Address" required />
+        </div>
+        <button type="submit" class="w-full rounded-md py-3 mt-10 duration-500 text-white bg-darkBlue border-2 border-darkBlue hover:bg-inherit hover:text-darkBlue">
+          Withdraw
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+    <%- include ("partials/script"); -%>
+</body>
+
+</html>

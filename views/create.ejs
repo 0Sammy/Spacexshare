@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account</title>
+  <%-include("partials/SEO") -%>
+  <!-- Password Strength -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js" defer></script>
+</head>
+
+<body>
+<%- include("partials/_alert")%>
+<div id="notification" class="hidden rounded-md justify-between items-center gap-x-3 absolute top-4 left-2 sm:left-4 bg-red-600 text-white h-[3rem] w-[95%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] px-4">
+  <p class="text-xs sm:text-sm">The entered Passwords do not match</p> 
+  <div class="flex gap-x-3 items-center">
+    <button onclick="correctPassword()" class="text-white text-xs px-2 py-1 border-2 border-white rounded-md shrink-0">Rewrite</button>
+    <ion-icon onclick="hide()" name="close-circle" class="text-white text-2xl shrink-0 cursor-pointer"></ion-icon>
+  </div>
+ </div>
+    <section>
+      <div class="h-screen bg-white lg:flex">
+        <div class="flex h-full flex-col justify-center px-6 sm:px-8 md:px-10 lg:w-1/2 lg:px-12 xl:px-14 2xl:px-16">
+            <a href="/"><img class="w-28 md:w-36" src="../Images/Logo.png" alt="Spacexshare-ai Logo"/></a>
+            <h1 class="mt-6 text-xl font-semibold tracking-tighter sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl">
+              Sign Up
+            </h1>
+            <p class="mt-4 text-xs font-semibold tracking-tighter sm:text-sm md:text-base xl:text-lg 2xl:text-xl">
+              Welcome, let's get started
+            </p>
+            <form class="xl:[w-80%] mt-10 w-full sm:w-[90%] md:w-[70%] lg:w-[90%]" action="/user/create" method="post">
+              <div class="flex justify-between">
+                <div class="w-[48%] flex flex-col gap-y-2">
+                  <label for="firstName" class="cursor-pointer text-xs sm:text-sm lg:text-base">First Name</label>
+                  <input
+                  required
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  class="border border-[#E6E7E8] bg-inherit focus:bg-[#FFF] rounded-md py-2 px-4 text-sm outline-none placeholder:text-xs focus:outline-lightBlue sm:text-base sm:placeholder:text-sm md:py-3 lg:text-lg lg:placeholder:text-base"
+                  placeholder="John"/>
+                </div>
+                <div class="w-[48%] flex flex-col gap-y-2">
+                  <label for="lastName" class="cursor-pointer text-xs sm:text-sm lg:text-base">Last Name</label>
+                  <input
+                  required
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  class="border border-[#E6E7E8] bg-inherit focus:bg-[#FFF] rounded-md py-2 px-4 text-sm outline-none placeholder:text-xs focus:outline-lightBlue sm:text-base sm:placeholder:text-sm md:py-3 lg:text-lg lg:placeholder:text-base"
+                  placeholder="Doe"/>
+                </div>
+              </div>
+              <div class="mt-4 flex flex-col gap-y-2">
+                <label for="email" class="cursor-pointer text-xs sm:text-sm lg:text-base">Email</label>
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="border border-[#E6E7E8] bg-inherit focus:bg-[#FFF] rounded-md py-2 px-4 text-sm outline-none placeholder:text-xs focus:outline-lightBlue sm:text-base sm:placeholder:text-sm md:py-3 lg:text-lg lg:placeholder:text-base"
+                  placeholder="example@gmail.com"
+                />
+              </div>
+              <div class="mt-4 flex flex-col gap-y-2">
+                <label for="password" class="cursor-pointer text-xs sm:text-sm lg:text-base">Password</label>
+                <div class="relative">
+                  <input
+                    required
+                    type="password"
+                    name="password"
+                    id="myPassword"
+                    class="border border-[#E6E7E8] bg-inherit focus:bg-[#FFF] w-full rounded-md py-2 px-4 text-sm outline-none placeholder:text-xs focus:outline-lightBlue sm:text-base sm:placeholder:text-sm md:py-3 lg:text-lg lg:placeholder:text-base"
+                    placeholder="xxxxxxxxxxxxx"
+                  />
+                  <ion-icon name="eye" id="eye" class="text-lightBlack text-xl md:text-2xl absolute top-2 right-2 md:top-4 z-10 cursor-pointer" onclick="myFunction()"></ion-icon>
+                </div>
+              </div>
+              <div class="mt-2 w-full rounded-lg ml-1 " id="password-strength"><span></span></div> 
+              <p class="mt-1 text-xs text-center text-gray-400">Your Password Strength</p>
+              <div class="mt-4 flex flex-col gap-y-2">
+                <label for="confirmPassword" class="cursor-pointer text-xs sm:text-sm lg:text-base">Confirm Password</label>
+                <div class="relative">
+                  <input
+                    required
+                    type="password"
+                    name="confirmPassword"
+                    id="myPassword1"
+                    class="border border-[#E6E7E8] bg-inherit focus:bg-[#FFF] w-full rounded-md py-2 px-4 text-sm outline-none placeholder:text-xs focus:outline-lightBlue sm:text-base sm:placeholder:text-sm md:py-3 lg:text-lg lg:placeholder:text-base"
+                    placeholder="xxxxxxxxxxxxx"
+                  />
+                  <ion-icon name="eye" id="eye1" class="text-lightBlack text-xl md:text-2xl absolute top-2 right-2 md:top-4 z-10 cursor-pointer" onclick="myFunction1()"></ion-icon>
+                </div>
+              </div>
+              <div class="mt-4 flex flex-col gap-y-2">
+                <label for="referralCode" class="cursor-pointer text-xs sm:text-sm lg:text-base">Referral Code</label>
+                <input
+                  type="text"
+                  name="referredBy"
+                  id="referralCode"
+                  class="border border-[#E6E7E8] bg-inherit focus:bg-[#FFF] rounded-md py-2 px-4 text-sm outline-none placeholder:text-xs focus:outline-lightBlue sm:text-base sm:placeholder:text-sm md:py-3 lg:text-lg lg:placeholder:text-base"
+                  placeholder="4YWlZv Optional"
+                  value="<%= referral %>"
+                />
+              </div>
+              <p class="mt-8 text-xs sm:text-sm lg:text-base">
+                Already using Spacexshare-Ai?
+                <a
+                  href="/user/login"
+                  class="text-lightBlue duration-500 hover:underline"
+                  >Sign in here</a
+                >
+              </p>
+              <input type="hidden" name="role" value="<%= role %>" />
+              <button type="submit" id="submit" class="group mt-8 flex w-full items-center justify-center gap-x-1.5 rounded-md bg-lightBlue py-2 text-sm text-white sm:text-base md:py-3 lg:text-lg">
+                Continue
+                <img
+                  src="../Images/rightArrow.svg"
+                  alt="Right Arrow"
+                  class="transition duration-500 group-hover:translate-x-2"
+                />
+              </button>
+            </form>
+        </div>
+        <div class="hidden bg-lightBlue pt-10 lg:block lg:w-1/2">
+          <img
+            src="../Images/create.svg"
+            alt="Login Image"
+            class="h-full w-full"
+          />
+        </div>
+      </div>
+    </section>
+    <script src="../JS/form.js"></script>
+    <%-include("partials/script")-%>
+</body>
+
+</html>
