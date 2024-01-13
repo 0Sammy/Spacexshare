@@ -74,10 +74,10 @@
                     <div class="flex justify-between items-center mt-10">
                         <div class="flex flex-col gap-y-1">
                             <p class="text-[0.7rem] md:text-xs text-[#020100] font-semibold">Total deposit</p>
-                            <p class="number text-[0.9rem] sm:text-lg lg:text-xl xl:text-3xl font-bold text-[#20BF55] noasterisks">+$<%= deposits.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
+                            <p class="number text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-[#20BF55] noasterisks">+$<%= deposits.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
                             <p class="number1 hidden">+$<%= deposits.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
                         </div>
-                        <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                        <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer">
                     </div>
                 </div>
                 <div class="w-[50%] bg-[#FFFFFF] h-48 rounded-xl mt-6 border border-[#767680] border-opacity-10 min-w-[10rem] mb-4 p-2 md:p-4">
@@ -93,10 +93,10 @@
                     <div class="flex justify-between items-center mt-10">
                         <div class="flex flex-col gap-y-1">
                             <p class="text-[0.7rem] md:text-xs text-[#020100] font-semibold">Total withdraw</p>
-                            <p class="number text-[0.9rem] sm:text-lg lg:text-xl xl:text-3xl font-bold text-[#FF5964] noasterisks">-$<%= withdrawals.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
+                            <p class="number text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-[#FF5964] noasterisks">-$<%= withdrawals.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
                             <p class="hidden number1">-$<%= withdrawals.reduce((total, current) => total + current.amount, 0).toLocaleString() %></p>
                         </div>
-                        <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                        <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer">
                     </div>
                 </div>
             </div>
@@ -192,9 +192,9 @@
             <div class="bg-[#FFFFFF] rounded-2xl mt-6 border border-[#767680] border-opacity-10 px-4 py-8">
                 <p class="text-xs text-[#020100]">Available Balance</p>
                 <div class="flex gap-x-1 mt-2 border-b border-[#767680] border-opacity-10 pb-4">
-                    <p class="number text-lg sm:text-xl lg:text-2xl xl:text-4xl font-bold text-lightBlue noasterisks">$<%= user.balance.toLocaleString() %></p>
+                    <p class="number text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-lightBlue noasterisks">$<%= user.balance.toLocaleString() %></p>
                     <p class="hidden number1">$<%= user.balance.toLocaleString() %></p>
-                    <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer w-3 md:w-5">
+                    <img src="/Images/eye.svg" alt="Eye Icon" class="eyeIcon cursor-pointer">
                 </div>
                 <div class="flex flex-col gap-y-4 mt-4">
                     <div class="flex justify-between">

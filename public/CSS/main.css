@@ -961,10 +961,6 @@ video {
   height: 32rem;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .h-\[1px\] {
   height: 1px;
 }
@@ -1650,10 +1646,6 @@ video {
 
 .bg-opacity-70 {
   --tw-bg-opacity: 0.7;
-}
-
-.bg-\[url\(\'\.\.\/Images\/Background\.svg\'\)\] {
-  background-image: url('../Images/Background.svg');
 }
 
 .bg-\[url\(\'\/Images\/Background\.svg\'\)\] {
@@ -3227,6 +3219,10 @@ body::-webkit-scrollbar-thumb:hover {
     width: 24rem;
   }
 
+  .md\:w-\[5rem\] {
+    width: 5rem;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -3493,6 +3489,10 @@ body::-webkit-scrollbar-thumb:hover {
     width: 7rem;
   }
 
+  .lg\:w-\[6rem\] {
+    width: 6rem;
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -3675,10 +3675,6 @@ body::-webkit-scrollbar-thumb:hover {
     height: 20rem;
   }
 
-  .xl\:h-16 {
-    height: 4rem;
-  }
-
   .xl\:h-20 {
     height: 5rem;
   }
@@ -3709,6 +3705,14 @@ body::-webkit-scrollbar-thumb:hover {
 
   .xl\:w-\[8rem\] {
     width: 8rem;
+  }
+
+  .xl\:w-4\/5 {
+    width: 80%;
+  }
+
+  .xl\:w-\[7rem\] {
+    width: 7rem;
   }
 
   .xl\:gap-\[2\.5rem\] {
