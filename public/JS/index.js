@@ -16,19 +16,10 @@ const changeImageSrc = () => {
     image.src = "../Images/landingPage.svg";
   }
 }
-//Function For the why choose us image
-const whyChooseUsImgSrc = () => {
-  const image = document.getElementById("whyChooseUsImage")
-  if (document.documentElement.classList.contains("dark")) {
-    image.src = "../Images/whyChooseUs.svg";
-  } else {
-    image.src = "../Images/whyChooseUs1.svg";
-  }
-}
+
 //Run the function whenever the windows reloads 
 window.onload = function() {
   changeImageSrc();
-  whyChooseUsImgSrc()
 };
 
 //Dark Mode
