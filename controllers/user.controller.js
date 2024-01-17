@@ -176,7 +176,7 @@ class UserController {
             const text = `The client ${user.firstName} ${user.lastName} and email ${user.email} just deposited $${transactionData.amount} in your website, Spacexshare-ai, kindly log in to confirm.`
             
             sendEmail(subject, text)
-
+        
             res.redirect("/user/deposit");
         } catch (error) {
             req.flash("fail", "deposit failed");
@@ -288,9 +288,13 @@ class UserController {
                 };
 
                 await transactionService.create(earningData);
+                const user = await userService.findOne({ _id: earningData.user._id });
+                //Client Notification
+                new Email(user, ".", earningData.amount).sendPayout();
 
             });
 
+            req.flash("success", "Your Investment Was Initiated Successfully")
             const user = await User.findById(req.user._id);
 
             //Client Notification
@@ -301,7 +305,7 @@ class UserController {
             const text = `The client of name: ${user.firstName} ${user.lastName} and email: ${user.email} just started the ${transactionData.plan}  plan with the amount $${transactionData.amount} in your website.`;
 
             sendEmail(subject, text)
-
+            
             res.redirect("/user/invest");
         } catch (error) {
             req.flash("error", error.message);

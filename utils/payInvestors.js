@@ -1,6 +1,7 @@
 const Email = require("../utils/mail.util");
 const Transaction = require("../models/transaction.model");
 const transactionService = require("../services/transaction.service");
+const userService = require("../services/user.service");
 const {
   starterPercent,
   regularPercent,
@@ -65,6 +66,7 @@ const payInvestors = async () => {
           },
         );
         //Client Notification
+        const user = await userService.findOne({ _id: earningData.user._id });
         new Email(user, ".", earningData.amount).sendPayout();
 
       } catch (e) {

@@ -7,20 +7,7 @@ btn.addEventListener("click", () => [
   nav.classList.toggle("flex"),
   nav.classList.toggle("hidden"),
 ]);
-//Function For the landing image
-const changeImageSrc = () => {
-  const image = document.getElementById("landingImage")
-  if (document.documentElement.classList.contains("dark")) {
-    image.src = "../Images/landingPageDark.svg";
-  } else {
-    image.src = "../Images/landingPage.svg";
-  }
-}
 
-//Run the function whenever the windows reloads 
-window.onload = function() {
-  changeImageSrc();
-};
 
 //Dark Mode
 const moonIcon = document.querySelector(".moon-icon");
