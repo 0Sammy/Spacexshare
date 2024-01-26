@@ -22,6 +22,7 @@ class AuthController {
             };
 
             // checking if referral exists
+            //FIXME: Change the referral thing from ID to username
             let referral;
             if (req.body.referredBy !== "") {
                 referral = await userService.findOne({ userId: req.body.referredBy });
