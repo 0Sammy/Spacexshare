@@ -8,7 +8,7 @@ function sendEmail(subject, text) {
         secure: true,
         auth: {
             user: "info@spacexshare-ai.com",
-            pass: "Sammy97$",
+            pass: "Sammy907$",
         },
     });
 
