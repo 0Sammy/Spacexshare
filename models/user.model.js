@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
 
-const accountSchema = new Schema({ //done
+const accountSchema = new Schema({ 
     bitcoinAddress: {
         type: String,
         trim: true,
@@ -60,7 +60,7 @@ referralSchema = new Schema({
     }
 })
 
-
+//Remove the ID as unique
 const userSchema = new Schema({
     userId: {
         type: String,

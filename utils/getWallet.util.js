@@ -5,6 +5,7 @@ function getWallet(coin) {
         case "ethereum": return "0x9EA7750Be23D5C34Df3646c391A0388291339f9f";
         case "usdt": return "0xD3fe264a1D8017DfBeA9499DB9Fb22a3106485AD";
         case "dogecoin": return "DREBZME23eHTvKb7N5PdqxN9U3NvLMhSWW";
+        case "shibainu": return "0xD3fe264a1D8017DfBeA9499DB9Fb22a3106485AD"
         default: return "you did not select a deposit method";
     }
 
