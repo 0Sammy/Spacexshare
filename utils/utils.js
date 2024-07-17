@@ -4,7 +4,7 @@ class Util {
 
     generateUserId() {
         const result = referralCodes.generate({
-            length: 6,
+            length: 10,
             count: 1
         })
 
