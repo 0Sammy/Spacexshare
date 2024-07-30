@@ -74,7 +74,8 @@ class UserController {
     }
 
     async renderReferral(req, res) {
-        const userInformation = req.userData;
+        const user = req.userData;
+        const userInformation = await userService.findOne({_id: user.id})
         res.render("referral", { user: userInformation });
     }
 

@@ -64,7 +64,7 @@
       <% user.referrals.forEach( referral => {%>
         <tr class="border-b h-10 border-limeGreen">
           <td class="text-xs md:text-smcapitalize text-center">
-            <%= referral?.username ?? "Unavailable" %>
+            <%= referral?.firstName %> <%= referral?.lastName ?? "Unavailable" %>
           </td>
           <td class="text-xs md:text-sm capitalize text-center">
             <%= referral?.createdAt?.toLocaleDateString() ?? "Unavailable" %>

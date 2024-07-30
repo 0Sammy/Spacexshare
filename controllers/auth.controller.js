@@ -41,15 +41,6 @@ class AuthController {
         res.redirect("/user/login");
         return;
       }
-      let userWithSameId = await userService.findOne({
-        userId: userData.userId,
-      });
-      while (userWithSameId) {
-        // If a user with the same userId exists, generate a new userId
-        userData.userId = generateUserId();
-        // Check again if a user with the new userId exists
-        userWithSameId = await userService.findOne({ userId: userData.userId });
-      }
       
       const user = await userService.create(userData);
 
